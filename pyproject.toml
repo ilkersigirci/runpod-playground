@@ -1,0 +1,21 @@
+[project]
+name = "runpod-playground"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "ilkersigirci", email = "sigirci.ilker@gmail.com" }
+]
+dependencies = [
+    "huggingface-hub>=0.21.4",
+    "python-dotenv>=1.0.1",
+    "runpod>=1.6.2",
+]
+readme = "README.md"
+requires-python = ">= 3.11"
+
+[tool.rye]
+managed = true
+virtual = true
+dev-dependencies = [
+    "ipykernel>=6.29.3",
+]
