@@ -1,0 +1,21 @@
+max_tokens:
+  override: 4096
+  force: false
+
+min_p:
+  override: 0.02
+  force: false
+
+## Dynamic Temp
+min_temp:
+  override: 0.2
+  force: false
+max_temp:
+  override: 1.5
+  force: false
+temp_exponent:
+  override: 1.0
+  force: false
+# smoothing_factor:
+#   override: 0.0
+#   force: false
