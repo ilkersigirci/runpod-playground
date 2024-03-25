@@ -9,7 +9,7 @@ if pip show torch | grep -q "Version: 2.1.1"; then
 fi
 
 # Symbolic link models
-for file in /workspace/models/*; do
+for file in /workspace/runpod-playground/models/*; do
     ln -s "$file" "/workspace/tabbyAPI/official-repo/models/$(basename "$file")"
 done
 

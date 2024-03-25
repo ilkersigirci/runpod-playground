@@ -13,11 +13,11 @@ if ! pip show vllm >/dev/null 2>&1; then
 fi
 
 # --tensor-parallel-size 2
-MODEL=/workspace/models/Mixtral-8x7B-Instruct-v0.1 && \
+MODEL=/workspace/runpod-playground/models/Mixtral-8x7B-Instruct-v0.1 && \
 MODEL_NAME=Mixtral-8x7B-Instruct-v0.1 && \
-# MODEL=/workspace/models/Trendyol-LLM-7b-chat-v0.1 && \
+# MODEL=/workspace/runpod-playground/models/Trendyol-LLM-7b-chat-v0.1 && \
 # MODEL_NAME=Trendyol && \
-# MODEL=/workspace/models/aya-101&& \
+# MODEL=/workspace/runpod-playground/models/aya-101&& \
 # MODEL_NAME=Aya && \
 HF_HOME=/workspace/huggingface \
     python -m vllm.entrypoints.openai.api_server \

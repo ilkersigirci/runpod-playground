@@ -16,9 +16,9 @@ if ! pip show aphrodite-engine >/dev/null 2>&1; then
 fi
 
 # python -m aphrodite.endpoints.openai.api_server --help
-MODEL=/workspace/models/Mixtral-8x7B-Instruct-v0.1 && \
+MODEL=/workspace/runpod-playground/models/Mixtral-8x7B-Instruct-v0.1 && \
 MODEL_NAME=Mixtral-8x7B-Instruct-v0.1 && \
-# MODEL=/workspace/models/c4ai-command-r-v01 && \
+# MODEL=/workspace/runpod-playground/models/c4ai-command-r-v01 && \
 # MODEL_NAME=c4ai-command-r-v01 && \
 HF_HOME=/workspace/huggingface \
     python -m aphrodite.endpoints.openai.api_server \

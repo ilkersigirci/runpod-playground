@@ -266,3 +266,5 @@ cython_debug/
 # Custom ignores
 
 /.ruff_cache/
+models
+huggingface
