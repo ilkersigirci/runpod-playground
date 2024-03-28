@@ -26,7 +26,7 @@ def download_model_hf(
     snapshot_download(
         repo_id=repo_id,
         revision=revision,
-        local_dir=f"./models/{local_dir_name}",
+        local_dir=f"/workspace/runpod-playground/models/{local_dir_name}",
         local_dir_use_symlinks=False,
         ignore_patterns=ignore_patterns,
         token=token,
