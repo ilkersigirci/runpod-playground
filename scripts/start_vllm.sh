@@ -9,21 +9,19 @@ if pip show torch | grep -q "Version: 2.1.1"; then
 fi
 
 if ! pip show vllm >/dev/null 2>&1; then
-    pip install vllm==0.3.3
+    pip install vllm==0.4.0
 fi
 
-# --tensor-parallel-size 2
 MODEL=/workspace/runpod-playground/models/Mixtral-8x7B-Instruct-v0.1 && \
 MODEL_NAME=Mixtral-8x7B-Instruct-v0.1 && \
-# MODEL=/workspace/runpod-playground/models/Trendyol-LLM-7b-chat-v0.1 && \
-# MODEL_NAME=Trendyol && \
-# MODEL=/workspace/runpod-playground/models/aya-101&& \
-# MODEL_NAME=Aya && \
+# MODEL=/workspace/runpod-playground/models/CohereForAI/c4ai-command-r-v01 && \
+# MODEL_NAME=c4ai-command-r-v01 && \
 HF_HOME=/workspace/huggingface \
     python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
     --tensor-parallel-size 2 \
     --gpu-memory-utilization 0.9 \
+    --enable-prefix-caching \
     --model $MODEL \
     --served-model-name $MODEL_NAME
