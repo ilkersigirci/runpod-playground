@@ -48,8 +48,8 @@ model:
   # model_name:
   # model_name: TinyLlama-1B-exl2
   # model_name: Mixtral-8x7B-instruct-exl2
-  # model_name: Mixtral-8x7B-Instruct-v0.1
-  model_name: Trendyol-LLM-7b-chat-v0.1
+  model_name: Mixtral-8x7B-Instruct-v0.1
+  # model_name: Trendyol-LLM-7b-chat-v0.1
   # model_name: miquliz-120b-v2.0-5.0bpw-h6-exl2
   # model_name: aya-101
 

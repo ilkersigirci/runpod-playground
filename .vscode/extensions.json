@@ -1,14 +1,18 @@
 {
   "recommendations": [
-    "GitLab.gitlab-workflow",
-    "bungcip.better-toml",
-    "EditorConfig.EditorConfig",
-    "redhat.vscode-yaml",
+    "samuelcolvin.jinjahtml",
+    "editorconfig.editorconfig",
+    "tamasfe.even-better-toml",
+    "github.copilot",
+    "ms-toolsai.jupyter",
+    "cweijan.vscode-office",
+    "esbenp.prettier-vscode",
     "ms-python.python",
-    "ms-python.vscode-pylance",
-    "njpwerner.autodocstring",
+    "mutantdino.resourcemonitor",
     "charliermarsh.ruff",
-    // "ms-python.mypy-type-checker",
+    "rangav.vscode-thunder-client",
+    "davidhouchin.whitespace-plus",
+    "redhat.vscode-yaml"
   ],
   "unwantedRecommendations": [
     "ms-python.isort"
