@@ -12,7 +12,7 @@ pip install -r requirements.lock
 HF_HOME=/workspace/runpod-playground/huggingface python /workspace/runpod-playground/download_model.py
 
 # Start vllm
-nohup bash /workspace/runpod-playground/scripts/start_vllm.sh > mixtral_vllm.txt &
+nohup bash /workspace/runpod-playground/scripts/start_vllm.sh > vllm_output.txt &
 ```
 
 - Example curl

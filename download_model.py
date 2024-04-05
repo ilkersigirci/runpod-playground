@@ -1,7 +1,7 @@
 """
 pip install python-dotenv huggingface_hub
 
-HF_HOME=/workspace/huggingface python download_model.py
+HF_HOME=/workspace/runpod-playground/huggingface python download_model.py
 """
 
 import os
@@ -41,6 +41,7 @@ if __name__ == "__main__":
     # repo_id = "turboderp/Mixtral-8x7B-instruct-exl2"
     # repo_id = "turboderp/TinyLlama-1B-exl2"
     # repo_id = "CohereForAI/aya-101"
+    # repo_id = "CohereForAI/c4ai-command-r-plus"
     # repo_id = "wolfram/miquliz-120b-v2.0-5.0bpw-h6-exl2"
     # repo_id = "Trendyol/Trendyol-LLM-7b-base-v0.1"
     # repo_id = "teknium/OpenHermes-2.5-Mistral-7B"
