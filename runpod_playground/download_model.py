@@ -1,9 +1,3 @@
-"""
-pip install python-dotenv huggingface_hub
-
-HF_HOME=/workspace/runpod-playground/huggingface python download_model.py
-"""
-
 import os
 
 from dotenv import load_dotenv

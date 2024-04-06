@@ -9,7 +9,7 @@ cd /workspace/runpod-playground
 pip install -r requirements.lock
 
 # Download model
-HF_HOME=/workspace/runpod-playground/huggingface python /workspace/runpod-playground/download_model.py
+HF_HOME=/workspace/runpod-playground/huggingface python /workspace/runpod-playground/runpod_playground/download_model.py
 
 # Start vllm
 nohup bash /workspace/runpod-playground/scripts/start_vllm.sh > vllm_output.txt &
