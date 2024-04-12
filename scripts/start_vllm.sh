@@ -9,24 +9,27 @@ if pip show torch | grep -q "Version: 2.1.1"; then
 fi
 
 if ! pip show vllm >/dev/null 2>&1; then
+    echo "******** Installing vllm ********"
     pip install vllm==0.4.0.post1
-    
     # Alternative: From github main
     # pip install git+https://github.com/vllm-project/vllm#main
 fi
 
 if ! pip show flash-attn >/dev/null 2>&1; then
+    echo "******** Installing flash-attn ********"
     pip install flash-attn --no-build-isolation
+fi
 
-MODEL=/workspace/runpod-playground/models/Mixtral-8x7B-Instruct-v0.1 && \
-MODEL_NAME=Mixtral-8x7B-Instruct-v0.1 && \
-# MODEL=/workspace/runpod-playground/models/c4ai-command-r-plus && \
-# MODEL_NAME=c4ai-command-r-plus && \
+GPU_COUNT=$(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1)
+MODEL=/workspace/runpod-playground/models/Mixtral-8x7B-Instruct-v0.1
+MODEL_NAME=Mixtral-8x7B-Instruct-v0.1
+# MODEL=/workspace/runpod-playground/models/c4ai-command-r-plus
+# MODEL_NAME=c4ai-command-r-plus
 HF_HOME=/workspace/huggingface \
     python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
-    --tensor-parallel-size $(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1) \
+    --tensor-parallel-size $GPU_COUNT \
     --gpu-memory-utilization 0.9 \
     --enable-prefix-caching \
     --model $MODEL \

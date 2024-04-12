@@ -15,11 +15,11 @@ HF_HOME=/workspace/runpod-playground/huggingface python /workspace/runpod-playgr
 nohup bash /workspace/runpod-playground/scripts/start_vllm.sh > vllm_output.txt &
 ```
 
-- Example curl
+- Example request with system message
 
 ```bash
 curl --request POST \
-    --url https://t7b5rytnikjr54-8000.proxy.runpod.net/v1/chat/completions \
+    --url https://1rvt8fq3evjipt-8000.proxy.runpod.net/v1/chat/completions \
     --header "Content-Type: application/json" \
     --data '{
   "model": "Mixtral-8x7B-Instruct-v0.1",
@@ -28,6 +28,25 @@ curl --request POST \
       "role": "system",
       "content": "You are a helpful virtual assistant trained by OpenAI."
   },
+  {
+    "role": "user",
+    "content": "Who are you?"
+  }
+  ], 
+  "temperature": 0.8,
+  "stream": false
+}'
+```
+
+- Example request without system message
+
+```bash
+curl --request POST \
+    --url https://1rvt8fq3evjipt-8000.proxy.runpod.net/v1/chat/completions \
+    --header "Content-Type: application/json" \
+    --data '{
+  "model": "Mixtral-8x7B-Instruct-v0.1",
+  "messages": [
   {
     "role": "user",
     "content": "Who are you?"
