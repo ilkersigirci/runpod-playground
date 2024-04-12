@@ -24,7 +24,7 @@ HF_HOME=/workspace/huggingface \
     python -m aphrodite.endpoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
-    --tensor-parallel-size 2 \
+    --tensor-parallel-size $(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1) \
     --gpu-memory-utilization 0.9 \
     --model $MODEL \
     --served-model-name $MODEL_NAME

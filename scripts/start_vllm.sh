@@ -9,7 +9,7 @@ if pip show torch | grep -q "Version: 2.1.1"; then
 fi
 
 if ! pip show vllm >/dev/null 2>&1; then
-    pip install vllm==0.4.0
+    pip install vllm==0.4.0.post1
     
     # Alternative: From github main
     # pip install git+https://github.com/vllm-project/vllm#main
@@ -26,7 +26,7 @@ HF_HOME=/workspace/huggingface \
     python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
-    --tensor-parallel-size 2 \
+    --tensor-parallel-size $(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1) \
     --gpu-memory-utilization 0.9 \
     --enable-prefix-caching \
     --model $MODEL \
