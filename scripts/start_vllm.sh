@@ -21,10 +21,12 @@ if ! pip show flash-attn >/dev/null 2>&1; then
 fi
 
 GPU_COUNT=$(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1)
-MODEL=/workspace/runpod-playground/models/Mixtral-8x7B-Instruct-v0.1
-MODEL_NAME=Mixtral-8x7B-Instruct-v0.1
+# MODEL=/workspace/runpod-playground/models/Mixtral-8x7B-Instruct-v0.1
+# MODEL_NAME=Mixtral-8x7B-Instruct-v0.1
 # MODEL=/workspace/runpod-playground/models/c4ai-command-r-plus
 # MODEL_NAME=c4ai-command-r-plus
+MODEL=/workspace/runpod-playground/models/WizardLM-2-8x22B
+MODEL_NAME=WizardLM-2-8x22B
 HF_HOME=/workspace/huggingface \
     python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
@@ -32,5 +34,6 @@ HF_HOME=/workspace/huggingface \
     --tensor-parallel-size $GPU_COUNT \
     --gpu-memory-utilization 0.9 \
     --enable-prefix-caching \
+    --max-model-len 6000 \
     --model $MODEL \
     --served-model-name $MODEL_NAME

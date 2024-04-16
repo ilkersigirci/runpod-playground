@@ -30,7 +30,7 @@ def download_model_hf(
 if __name__ == "__main__":
     load_dotenv()
 
-    repo_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
+    # repo_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
     # repo_id = "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
     # repo_id = "turboderp/Mixtral-8x7B-instruct-exl2"
     # repo_id = "turboderp/TinyLlama-1B-exl2"
@@ -40,6 +40,7 @@ if __name__ == "__main__":
     # repo_id = "Trendyol/Trendyol-LLM-7b-base-v0.1"
     # repo_id = "teknium/OpenHermes-2.5-Mistral-7B"
     # repo_id = "sambanovasystems/SambaLingo-Turkish-Chat"
+    repo_id = "alpindale/WizardLM-2-8x22B"
 
     revision = "main"
     # revision = "6.0bpw"
