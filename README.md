@@ -9,10 +9,10 @@ cd /workspace/runpod-playground
 pip install -r requirements.lock
 
 # Download model
-HF_HOME=/workspace/runpod-playground/huggingface python /workspace/runpod-playground/runpod_playground/download_model.py
+make download-model
 
 # Start vllm
-nohup bash /workspace/runpod-playground/scripts/start_vllm.sh > vllm_output.txt &
+make start-vllm
 ```
 
 - Example request with system message

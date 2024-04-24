@@ -26,7 +26,7 @@ python-info: ## List information about the python environment
 update-pip:
 	${PYTHON} -m pip install -U pip
 
-install-rye:
+install-rye: ## Install rye
 	! command -v rye &> /dev/null && curl -sSf https://rye-up.com/get | bash
 	# echo 'source "$HOME/.rye/env"' >> ~/.bashrc && rye config --set-bool behavior.use-uv=true
 
@@ -34,8 +34,8 @@ install: ## Installs the development version of the package
 	$(MAKE) install-rye
 	rye sync --no-lock
 
-start-vllm:
-	nohup bash $LIBRARY_BASE_PATH/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
+download-model: ## Download the model that is specified in the .env file
+	python $LIBRARY_BASE_PATH/runpod_playground/download_model.py
 
-download-model:
-	python download_model.py
+start-vllm: ## Start the VLLM server
+	nohup bash $LIBRARY_BASE_PATH/scripts/start_vllm.sh > vllm_log.txt 2>&1 &

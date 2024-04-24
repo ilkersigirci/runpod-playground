@@ -30,17 +30,15 @@ def download_model_hf(
 if __name__ == "__main__":
     load_dotenv()
 
-    # repo_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
-    # repo_id = "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
-    # repo_id = "turboderp/Mixtral-8x7B-instruct-exl2"
-    # repo_id = "turboderp/TinyLlama-1B-exl2"
-    # repo_id = "CohereForAI/aya-101"
-    # repo_id = "CohereForAI/c4ai-command-r-plus"
-    # repo_id = "wolfram/miquliz-120b-v2.0-5.0bpw-h6-exl2"
-    # repo_id = "Trendyol/Trendyol-LLM-7b-base-v0.1"
-    # repo_id = "teknium/OpenHermes-2.5-Mistral-7B"
-    # repo_id = "sambanovasystems/SambaLingo-Turkish-Chat"
-    repo_id = "alpindale/WizardLM-2-8x22B"
+    DEPLOYED_MODEL_NAME = os.getenv("DEPLOYED_MODEL_NAME", "alpindale/WizardLM-2-8x22B")
+
+    # DEPLOYED_MODEL_NAME = "mistralai/Mixtral-8x22B-Instruct-v0.1"
+    # DEPLOYED_MODEL_NAME = "alpindale/WizardLM-2-8x22B"
+    # DEPLOYED_MODEL_NAME = "turboderp/TinyLlama-1B-exl2"
+    # DEPLOYED_MODEL_NAME = "CohereForAI/c4ai-command-r-plus"
+    # DEPLOYED_MODEL_NAME = "Trendyol/Trendyol-LLM-7b-base-v0.1"
+    # DEPLOYED_MODEL_NAME = "sambanovasystems/SambaLingo-Turkish-Chat"
+    # DEPLOYED_MODEL_NAME = "microsoft/Phi-3-mini-128k-instruct"
 
     revision = "main"
     # revision = "6.0bpw"
@@ -49,5 +47,5 @@ if __name__ == "__main__":
     ignore_patterns = ["*.pt", "*.bin"]
 
     download_model_hf(
-        repo_id=repo_id, revision=revision, ignore_patterns=ignore_patterns
+        repo_id=DEPLOYED_MODEL_NAME, revision=revision, ignore_patterns=ignore_patterns
     )
