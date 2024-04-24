@@ -2,6 +2,8 @@
 
 ## Steps
 
+- In `.env` file, change `DEPLOYED_MODEL_NAME` variable to the model name you want to deploy by following hunggingface repository id convention.
+
 ```bash
 cd /workspace
 git clone https://github.com/ilkersigirci/runpod-playground.git

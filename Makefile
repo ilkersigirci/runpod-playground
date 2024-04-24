@@ -4,6 +4,7 @@
 SHELL=/bin/bash
 
 LIBRARY_BASE_PATH=/workspace/runpod-playground
+PYTHON=python
 
 .PHONY: help install
 .DEFAULT_GOAL=help
@@ -35,7 +36,7 @@ install: ## Installs the development version of the package
 	rye sync --no-lock
 
 download-model: ## Download the model that is specified in the .env file
-	python $LIBRARY_BASE_PATH/runpod_playground/download_model.py
+	${PYTHON} ${LIBRARY_BASE_PATH}/runpod_playground/download_model.py
 
 start-vllm: ## Start the VLLM server
-	nohup bash $LIBRARY_BASE_PATH/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
+	nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &

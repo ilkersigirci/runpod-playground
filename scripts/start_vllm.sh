@@ -10,7 +10,7 @@ if pip show torch | grep -q "Version: 2.1.1"; then
     pip uninstall torch torchaudio torchvision -y
 fi
 
-if pip show huggingface_hub >/dev/null 2>&1; then
+if ! pip show huggingface_hub >/dev/null 2>&1; then
     echo "******** Installing project dependencies ********"
     pip install -r requirements.lock
 fi
