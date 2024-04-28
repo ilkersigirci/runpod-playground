@@ -3,6 +3,7 @@
 ## Steps
 
 - In `.env` file, change `DEPLOYED_MODEL_NAME` variable to the model name you want to deploy by following hunggingface repository id convention.
+- One also can change `MAX_CONTEXT_LEN` variable to the desired context length.
 
 ```bash
 cd /workspace

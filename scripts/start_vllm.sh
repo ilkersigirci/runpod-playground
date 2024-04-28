@@ -26,7 +26,7 @@ fi
 
 if ! pip show vllm >/dev/null 2>&1; then
     echo "******** Installing vllm ********"
-    pip install vllm==0.4.0.post1
+    pip install vllm==0.4.1
     # Alternative: From github main
     # pip install git+https://github.com/vllm-project/vllm#main
 fi
@@ -42,9 +42,9 @@ HF_HOME=/workspace/huggingface \
     python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
-    --tensor-parallel-size $GPU_COUNT \
-    --gpu-memory-utilization 0.95 \
     --enable-prefix-caching \
-    --max-model-len 32000 \
+    --gpu-memory-utilization 0.97 \
+    --tensor-parallel-size $GPU_COUNT \
+    --max-model-len $MAX_CONTEXT_LEN \
     --model $MODEL_PATH \
     --served-model-name $SERVED_MODEL_NAME
