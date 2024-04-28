@@ -40,3 +40,10 @@ download-model: ## Download the model that is specified in the .env file
 
 start-vllm: ## Start the VLLM server
 	nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
+
+stop-vllm: ## Stop the VLLM server
+	kill -9 $$(ps aux | grep vllm.entrypoints | awk '{print $$2}' | head -n 1)
+
+restart-vllm: ## Stops and starts the VLLM server
+	$(MAKE) stop-vllm
+	$(MAKE) start-vllm

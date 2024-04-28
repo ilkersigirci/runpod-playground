@@ -15,6 +15,9 @@ make download-model
 
 # Start vllm
 make start-vllm
+
+# Restart vllm
+make restart-vllm
 ```
 
 - Example request with system message
