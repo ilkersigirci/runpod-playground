@@ -5,6 +5,8 @@ SHELL=/bin/bash
 
 LIBRARY_BASE_PATH=/workspace/runpod-playground
 PYTHON=python
+DEPLOYED_MODEL_NAME=alpindale/WizardLM-2-8x22B
+MAX_CONTEXT_LEN=32000
 
 .PHONY: help install
 .DEFAULT_GOAL=help
@@ -34,6 +36,16 @@ install-rye: ## Install rye
 install: ## Installs the development version of the package
 	$(MAKE) install-rye
 	rye sync --no-lock
+
+change-model-env: ## Change the model that is specified in the .env file
+	# sed -i 's/DEPLOYED_MODEL_NAME=alpindale\/WizardLM-2-8x22B/DEPLOYED_MODEL_NAME=CohereForAI\/c4ai-command-r-v01/g' .env
+	sed -i '/DEPLOYED_MODEL_NAME=/d' .env
+	echo "DEPLOYED_MODEL_NAME=${DEPLOYED_MODEL_NAME}" >> .env
+
+change-max-context-len-env: ## Change the max context length that is specified in the .env file
+	# sed -i 's/MAX_CONTEXT_LEN=32000/MAX_CONTEXT_LEN=40000/g' .env
+	sed -i '/MAX_CONTEXT_LEN=/d' .env
+	echo "MAX_CONTEXT_LEN=${MAX_CONTEXT_LEN}" >> .env
 
 download-model: ## Download the model that is specified in the .env file
 	${PYTHON} ${LIBRARY_BASE_PATH}/runpod_playground/download_model.py
