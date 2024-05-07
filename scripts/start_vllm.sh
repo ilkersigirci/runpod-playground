@@ -26,7 +26,7 @@ fi
 
 if ! pip show vllm >/dev/null 2>&1; then
     echo "******** Installing vllm ********"
-    pip install vllm==0.4.1
+    pip install vllm==0.4.2
     # Alternative: From github main
     # pip install git+https://github.com/vllm-project/vllm#main
 fi
