@@ -2,17 +2,6 @@
 
 ## Steps
 
-- In `.env` file, change `DEPLOYED_MODEL_NAME` variable to the model name you want to deploy by following hunggingface repository id convention.
-- One can also change `MAX_CONTEXT_LEN` variable to the desired context length.
-- Example: Change default model and its context length to CohereForAI/c4ai-command-r-v01
-
-```bash
-make change-model-env DEPLOYED_MODEL_NAME=CohereForAI/c4ai-command-r-v01
-make change-max-context-len-env MAX_CONTEXT_LEN=40000
-
-```
-
-
 ```bash
 cd /workspace
 git clone https://github.com/ilkersigirci/runpod-playground.git
@@ -27,6 +16,16 @@ make start-vllm
 
 # Restart vllm
 make restart-vllm
+```
+
+- To deploy different model, in `.env` file, change `DEPLOYED_MODEL_NAME` variable to the model name you want to deploy by following hunggingface repository id convention.
+- One can also change `MAX_CONTEXT_LEN` variable to the desired context length.
+- Example: Change default model and its context length to CohereForAI/c4ai-command-r-v01
+
+```bash
+make change-model-env DEPLOYED_MODEL_NAME=CohereForAI/c4ai-command-r-v01
+make change-max-context-len-env MAX_CONTEXT_LEN=40000
+
 ```
 
 - Example request with system message
