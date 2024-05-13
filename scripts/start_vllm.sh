@@ -5,35 +5,31 @@ if ! command -v nano >/dev/null 2>&1; then
     apt update -y && apt install nano htop nvtop ncdu -y
 fi
 
-if pip show torch | grep -q "Version: 2.1.1"; then
-    echo "******** Uninstalling torch 2.1.1 ********"
-    pip uninstall torch torchaudio torchvision -y
+# Create uv virtual environment
+if [ ! -d "/workspace/runpod-playground/.venv" ]; then
+    echo "******** Creating virtual environment using uv with python3.11 ********"
+    bash /workspace/runpod-playground/scripts/install_uv.sh
 fi
 
-if ! pip show huggingface_hub >/dev/null 2>&1; then
-    echo "******** Installing project dependencies ********"
-    pip install -r requirements.lock
-fi
+source $HOME/.cargo/env bash
+source /workspace/runpod-playground/.venv/bin/activate
 
 # Download model if not already present
 SERVED_MODEL_NAME="${DEPLOYED_MODEL_NAME#*/}"
 
 if [ ! -d $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME ]; then
+    echo "******** Installing download dependencies ********"
+    uv pip install python-dotenv huggingface-hub hf_transfer modelscope
     echo "******** Downloading model ********"
     python $LIBRARY_BASE_PATH/runpod_playground/download_model.py
 fi
 
 
-if ! pip show vllm >/dev/null 2>&1; then
-    echo "******** Installing vllm ********"
-    pip install vllm==0.4.2
+if ! uv pip show vllm >/dev/null 2>&1; then
+    echo "******** Installing vllm and its required dependencies ********"
+    uv pip install vllm==0.4.2 vllm-flash-attn==2.5.8.post1 accelerate
     # Alternative: From github main
-    # pip install git+https://github.com/vllm-project/vllm#main
-fi
-
-if ! pip show flash-attn >/dev/null 2>&1; then
-    echo "******** Installing flash-attn ********"
-    pip install flash-attn --no-build-isolation
+    # uv pip install git+https://github.com/vllm-project/vllm#main
 fi
 
 GPU_COUNT=$(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1)
