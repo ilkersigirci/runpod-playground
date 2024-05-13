@@ -1,6 +1,9 @@
 #!/bin/bash
 
-cd /workspace/runpod-playground
+# Load .env file
+source /workspace/runpod-playground/.env
+
+cd $LIBRARY_BASE_PATH
 
 # Install python3.11
 if ! command -v python3.11 >/dev/null 2>&1; then
@@ -18,7 +21,7 @@ if ! command -v uv >/dev/null 2>&1; then
     
     source $HOME/.cargo/env bash
 
-    if [ ! -d "/workspace/runpod-playground/.venv" ]; then
+    if [ ! -d $LIBRARY_BASE_PATH/.venv ]; then
         echo "******** Creating virtual environment using uv with python3.11 ********"
         uv venv --python python3.11
     fi
