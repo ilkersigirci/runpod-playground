@@ -1,29 +1,31 @@
 #!/bin/bash
 
-if ! command -v nano >/dev/null 2>&1; then
+if ! command -v nvtop >/dev/null 2>&1; then
+    echo "******** Updating apt ********"
+    apt update -y -qq > /dev/null
     echo "******** Installing useful deb packages ********"
-    apt update -y && apt install nano htop nvtop ncdu -y
+    apt install nano htop nvtop ncdu -y
 fi
+
+# Load .env file
+source /workspace/runpod-playground/.env
 
 # Create uv virtual environment
-if [ ! -d "/workspace/runpod-playground/.venv" ]; then
-    echo "******** Creating virtual environment using uv with python3.11 ********"
-    bash /workspace/runpod-playground/scripts/install_uv.sh
+if [ ! -d $LIBRARY_BASE_PATH/.venv ]; then
+    bash $LIBRARY_BASE_PATH/scripts/install_uv.sh
 fi
 
+# Load uv
 source $HOME/.cargo/env bash
-source /workspace/runpod-playground/.venv/bin/activate
+
+# Activate uv's virtual environment
+source $LIBRARY_BASE_PATH/.venv/bin/activate
 
 # Download model if not already present
 SERVED_MODEL_NAME="${DEPLOYED_MODEL_NAME#*/}"
-
 if [ ! -d $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME ]; then
-    echo "******** Installing download dependencies ********"
-    uv pip install python-dotenv huggingface-hub hf_transfer modelscope
-    echo "******** Downloading model ********"
-    python $LIBRARY_BASE_PATH/runpod_playground/download_model.py
+    bash $LIBRARY_BASE_PATH/scripts/download_model.sh
 fi
-
 
 if ! uv pip show vllm >/dev/null 2>&1; then
     echo "******** Installing vllm and its required dependencies ********"
@@ -34,8 +36,7 @@ fi
 
 GPU_COUNT=$(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1)
 MODEL_PATH=$LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
-HF_HOME=/workspace/huggingface \
-    python -m vllm.entrypoints.openai.api_server \
+python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
     --enable-prefix-caching \

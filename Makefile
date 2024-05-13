@@ -48,7 +48,7 @@ change-max-context-len-env: ## Change the max context length that is specified i
 	echo "MAX_CONTEXT_LEN=${MAX_CONTEXT_LEN}" >> .env
 
 download-model: ## Download the model that is specified in the .env file
-	${PYTHON} ${LIBRARY_BASE_PATH}/runpod_playground/download_model.py
+	nohup bash ${LIBRARY_BASE_PATH}/scripts/download_model.sh > download_model_log.txt 2>&1 &
 
 start-vllm: ## Start the VLLM server
 	nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
@@ -59,3 +59,6 @@ stop-vllm: ## Stop the VLLM server
 restart-vllm: ## Stops and starts the VLLM server
 	$(MAKE) stop-vllm
 	$(MAKE) start-vllm
+
+log-vllm: ## Show the log of the VLLM server
+	tail -f vllm_log.txt
