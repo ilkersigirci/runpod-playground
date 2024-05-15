@@ -78,5 +78,5 @@ curl --request POST \
 ## Model CLI Download
 
 ```bash
-huggingface-cli download turboderp/Llama2-7B-chat-exl2 --revision 4.0bpw --local-dir-use-symlinks False --local-dir my_model_dir
+huggingface-cli download microsoft/Phi-3-mini-128k-instruct --repo-type model --revision main --local-dir models/Phi-3-mini-128k-instruct
 ```
