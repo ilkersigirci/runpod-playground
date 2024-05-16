@@ -4,7 +4,7 @@ if ! command -v nvtop >/dev/null 2>&1; then
     echo "******** Updating apt ********"
     apt update -y -qq > /dev/null
     echo "******** Installing useful deb packages ********"
-    apt install nano htop nvtop ncdu -y
+    apt install nano htop nvtop ncdu -y -qq > /dev/null
 fi
 
 # Load .env file

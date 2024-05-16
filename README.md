@@ -6,13 +6,15 @@
 cd /workspace
 git clone https://github.com/ilkersigirci/runpod-playground.git
 cd /workspace/runpod-playground
-pip install -r requirements.lock
 
 # Download model
 make download-model
 
 # Start vllm
 make start-vllm
+
+# See vllm logs
+make log-vllm
 
 # Restart vllm
 make restart-vllm
