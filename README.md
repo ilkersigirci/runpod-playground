@@ -76,9 +76,3 @@ curl --request POST \
 
 - [Official tabbyAPI Templates](https://github.com/theroyallab/llm-prompt-templates/)
 - [chat_templates github](https://github.com/chujiezheng/chat_templates)
-
-## Model CLI Download
-
-```bash
-huggingface-cli download microsoft/Phi-3-mini-128k-instruct --repo-type model --revision main --local-dir models/Phi-3-mini-128k-instruct
-```

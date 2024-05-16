@@ -23,6 +23,6 @@ if [ ! $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME ]; then
 fi
 
 echo "******** Installing download dependencies ********"
-uv pip install python-dotenv huggingface-hub hf_transfer modelscope
+uv pip install python-dotenv huggingface-hub[cli] hf_transfer modelscope
 echo "******** Downloading model ********"
-python $LIBRARY_BASE_PATH/runpod_playground/download_model.py
+huggingface-cli download $DEPLOYED_MODEL_NAME --repo-type model --revision main --local-dir $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
