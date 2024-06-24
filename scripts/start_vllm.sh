@@ -29,11 +29,11 @@ fi
 
 if ! uv pip show vllm >/dev/null 2>&1; then
     echo "******** Installing vllm and its required dependencies ********"
-    uv pip install vllm==0.4.2 accelerate
-    uv pip install wheel
-    uv pip install flash-attn==2.5.8 --no-build-isolation
+    uv pip install vllm==0.5.0.post1 vllm-flash-attn==2.5.9 accelerate
+    # uv pip install wheel
+    # uv pip install flash-attn==2.5.8 --no-build-isolation
     # Alternative: From github main
-    # uv pip install git+https://github.com/vllm-project/vllm#main vllm-flash-attn==2.5.8.post1 accelerate
+    # uv pip install git+https://github.com/vllm-project/vllm#main
 fi
 
 GPU_COUNT=$(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1)
