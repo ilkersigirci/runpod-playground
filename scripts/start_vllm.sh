@@ -29,7 +29,7 @@ fi
 
 if ! uv pip show vllm >/dev/null 2>&1; then
     echo "******** Installing vllm and its required dependencies ********"
-    uv pip install vllm==0.5.0.post1 vllm-flash-attn==2.5.9 accelerate "numpy<2.0.0"
+    uv pip install vllm==0.5.1 vllm-flash-attn==2.5.9 accelerate "numpy<2.0.0" setuptools
     # uv pip install wheel
     # uv pip install flash-attn==2.5.8 --no-build-isolation
     # Alternative: From github main
