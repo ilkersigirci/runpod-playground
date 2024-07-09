@@ -55,6 +55,7 @@ start-vllm: ## Start the VLLM server
 	nohup bash bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically.txt 2>&1 &
 
 stop-vllm: ## Stop the VLLM server
+	kill -9 $$(ps aux | grep run_preodically_basic | awk '{print $$2}' | head -n 1)
 	kill -9 $$(ps aux | grep vllm.entrypoints | awk '{print $$2}' | head -n 1)
 
 restart-vllm: ## Stops and starts the VLLM server
