@@ -2,6 +2,14 @@
 
 ## Steps
 
+- In `.env` file `API_ENDPOINT` should be set the runpod endpoint.
+  - Example: `API_ENDPOINT=https://1rvt8fq3evjipt-8000.proxy.runpod.net`
+    - Note that there is **no trailing slash** at the end of the url. 
+  - To find this url go to `https://www.runpod.io/console/pods`
+  - Select your running pod -> Connect -> Copy url of `Connect to HTTP Service [Port 8000]`
+- To send the healthcheck failure message to Microsoft Teams, `TEAMS_WEBHOOK_URL` should be set in `.env` file.
+  - Example: `TEAMS_WEBHOOK_URL=https://outlook.office.com/webhook/...`
+
 ```bash
 cd /workspace
 git clone https://github.com/ilkersigirci/runpod-playground.git
