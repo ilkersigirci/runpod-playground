@@ -24,7 +24,7 @@ curl --request POST \
   "messages": [
   {
     "role": "user",
-    "content": "Response with 200 OK"
+    "content": "Respond with 200 OK"
   }
   ], 
   "temperature": 0,
