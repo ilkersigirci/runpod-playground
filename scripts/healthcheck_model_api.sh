@@ -37,7 +37,7 @@ curl --request POST \
 if [ $? -eq 28 ]; then
     echo "Request timed out."
 
-    kill -9 $$(ps aux | grep vllm.entrypoints | awk '{print $$2}' | head -n 1)
+    pkill -f vllm.entrypoints
     nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
 
     # Send message to Teams Chat
@@ -57,7 +57,7 @@ fi
 
 echo "API response did not contain '200 OK'."
 
-kill -9 $$(ps aux | grep vllm.entrypoints | awk '{print $$2}' | head -n 1)
+pkill -f vllm.entrypoints
 nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
 
 # Send message to Teams Chat

@@ -52,11 +52,10 @@ download-model: ## Download the model that is specified in the .env file
 
 start-vllm: ## Start the VLLM server
 	nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
-	nohup bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically.txt 2>&1 &
+	nohup bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically.txt 300 2>&1 &
 
 stop-vllm: ## Stop the VLLM server
-	kill -9 $$(ps aux | grep run_preodically_basic | awk '{print $$2}' | head -n 1)
-	kill -9 $$(ps aux | grep vllm.entrypoints | awk '{print $$2}' | head -n 1)
+	pkill -f 'run_preodically_basic|vllm.entrypoints'
 
 restart-vllm: ## Stops and starts the VLLM server
 	$(MAKE) stop-vllm

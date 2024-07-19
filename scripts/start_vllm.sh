@@ -43,6 +43,7 @@ python -m vllm.entrypoints.openai.api_server \
     --port 8000 \
     --enable-prefix-caching \
     --gpu-memory-utilization 0.97 \
+    --disable-sliding-window \
     --tensor-parallel-size $GPU_COUNT \
     --max-model-len $MAX_CONTEXT_LEN \
     --model $MODEL_PATH \
