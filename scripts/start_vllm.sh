@@ -38,12 +38,12 @@ GPU_COUNT=$(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n
 MODEL_PATH=$LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
 
 # --disable-sliding-window \
+# --num-scheduler-steps 8 \
 python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
     --enable-prefix-caching \
     --gpu-memory-utilization 0.97 \
-    --num-scheduler-steps 8 \
     --use-v2-block-manager \
     --disable-log-stats \
     --tensor-parallel-size $GPU_COUNT \
