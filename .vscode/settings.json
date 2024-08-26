@@ -4,7 +4,7 @@
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
       // "source.fixAll": "always",
-      "source.organizeImports.ruff": "explicit",
+      "source.organizeImports": "explicit",
     },
     "editor.rulers": [
       {
@@ -13,6 +13,7 @@
       },
     ],
   },
+  "python.envFile": "", // Disable auto importing .env file values
   "python.languageServer": "Pylance",
   // "python.analysis.autoImportCompletions": true,
   "autoDocstring.generateDocstringOnEnter": true,
@@ -22,14 +23,22 @@
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
   // "python.testing.pytestArgs": [],
+  "debugpy.showPythonInlineValues": true,
   "notebook.formatOnSave.enabled": true,
   "notebook.codeActionsOnSave": {
-    // "source.fixAll.ruff": "always",
-    "source.organizeImports.ruff": "explicit",
+    // "notebook.source.fixAll": "always",
+    "notebook.source.organizeImports": "explicit",
   },
+  "ruff.nativeServer": "on",
   "evenBetterToml.formatter.reorderKeys": true,
   // "search.useIgnoreFiles": false,
   "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.venv": true,
+  },
+  "files.watcherExclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "**/*.code-search": true,

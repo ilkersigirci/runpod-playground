@@ -6,239 +6,512 @@
 #   features: []
 #   all-features: false
 #   with-sources: false
+#   generate-hashes: false
+#   universal: false
 
-aiodns==3.1.1
+aiodns==3.2.0
     # via aiohttp
-aiohttp==3.9.3
+aiohappyeyeballs==2.4.0
+    # via aiohttp
+aiohttp==3.10.5
     # via aiohttp-retry
+    # via datasets
+    # via fsspec
     # via runpod
+    # via vllm
 aiohttp-retry==2.8.3
     # via runpod
 aiosignal==1.3.1
     # via aiohttp
-annotated-types==0.6.0
+    # via ray
+annotated-types==0.7.0
     # via pydantic
-anyio==4.3.0
+anyio==4.4.0
     # via httpx
+    # via openai
     # via starlette
     # via watchfiles
 asttokens==2.4.1
     # via stack-data
-attrs==23.2.0
+attrs==24.2.0
     # via aiohttp
+    # via jsonschema
+    # via referencing
+audioread==3.0.1
+    # via librosa
 backoff==2.2.1
     # via runpod
-bcrypt==4.1.2
+bcrypt==4.2.0
     # via paramiko
-boto3==1.34.65
+boto3==1.35.5
     # via runpod
-botocore==1.34.65
+botocore==1.35.5
     # via boto3
     # via s3transfer
 brotli==1.1.0
     # via aiohttp
-certifi==2024.2.2
+certifi==2024.7.4
     # via httpcore
     # via httpx
     # via requests
-cffi==1.16.0
+cffi==1.17.0
     # via cryptography
     # via pycares
     # via pynacl
+    # via soundfile
 charset-normalizer==3.3.2
     # via requests
 click==8.1.7
+    # via ray
     # via runpod
+    # via typer
     # via uvicorn
+cloudpickle==3.0.0
+    # via outlines
 colorama==0.4.6
     # via runpod
 comm==0.2.2
     # via ipykernel
-cryptography==42.0.5
+cryptography==42.0.8
     # via paramiko
-debugpy==1.8.1
+    # via runpod
+datasets==2.21.0
+    # via outlines
+debugpy==1.8.5
     # via ipykernel
 decorator==5.1.1
     # via ipython
+    # via librosa
+dill==0.3.8
+    # via datasets
+    # via multiprocess
+diskcache==5.6.3
+    # via outlines
+distro==1.9.0
+    # via openai
 dnspython==2.6.1
     # via email-validator
-email-validator==2.1.1
+email-validator==2.2.0
     # via fastapi
 executing==2.0.1
     # via stack-data
-fastapi==0.110.0
+fastapi==0.112.2
     # via runpod
-filelock==3.13.1
+    # via vllm
+fastapi-cli==0.0.5
+    # via fastapi
+filelock==3.15.4
+    # via datasets
     # via huggingface-hub
+    # via ray
+    # via torch
+    # via transformers
+    # via triton
+    # via vllm
 frozenlist==1.4.1
     # via aiohttp
     # via aiosignal
-fsspec==2024.3.1
+    # via ray
+fsspec==2024.6.1
+    # via datasets
     # via huggingface-hub
+    # via torch
+gguf==0.9.1
+    # via vllm
 h11==0.14.0
     # via httpcore
     # via uvicorn
-httpcore==1.0.4
+httpcore==1.0.5
     # via httpx
 httptools==0.6.1
     # via uvicorn
 httpx==0.27.0
     # via fastapi
-huggingface-hub==0.23.0
-idna==3.6
+    # via openai
+huggingface-hub==0.24.6
+    # via datasets
+    # via tokenizers
+    # via transformers
+idna==3.8
     # via anyio
     # via email-validator
     # via httpx
     # via requests
     # via yarl
+importlib-metadata==8.4.0
+    # via vllm
 inquirerpy==0.3.4
     # via runpod
-ipykernel==6.29.3
-ipython==8.22.2
+interegular==0.3.3
+    # via lm-format-enforcer
+    # via outlines
+ipykernel==6.29.5
+ipython==8.26.0
     # via ipykernel
-itsdangerous==2.1.2
+itsdangerous==2.2.0
     # via fastapi
 jedi==0.19.1
     # via ipython
-jinja2==3.1.3
+jinja2==3.1.4
     # via fastapi
+    # via outlines
+    # via torch
+jiter==0.5.0
+    # via openai
 jmespath==1.0.1
     # via boto3
     # via botocore
-jupyter-client==8.6.1
+joblib==1.4.2
+    # via librosa
+    # via scikit-learn
+jsonschema==4.23.0
+    # via outlines
+    # via ray
+jsonschema-specifications==2023.12.1
+    # via jsonschema
+jupyter-client==8.6.2
     # via ipykernel
 jupyter-core==5.7.2
     # via ipykernel
     # via jupyter-client
+lark==1.2.2
+    # via outlines
+lazy-loader==0.4
+    # via librosa
+librosa==0.10.2.post1
+    # via vllm
+llvmlite==0.43.0
+    # via numba
+lm-format-enforcer==0.10.6
+    # via vllm
+markdown-it-py==3.0.0
+    # via rich
 markupsafe==2.1.5
     # via jinja2
-matplotlib-inline==0.1.6
+matplotlib-inline==0.1.7
     # via ipykernel
     # via ipython
+mdurl==0.1.2
+    # via markdown-it-py
+mpmath==1.3.0
+    # via sympy
+msgpack==1.0.8
+    # via librosa
+    # via ray
+msgspec==0.18.6
+    # via vllm
 multidict==6.0.5
     # via aiohttp
     # via yarl
+multiprocess==0.70.16
+    # via datasets
 nest-asyncio==1.6.0
     # via ipykernel
-orjson==3.9.15
+    # via outlines
+networkx==3.3
+    # via torch
+numba==0.60.0
+    # via librosa
+    # via outlines
+numpy==1.26.4
+    # via datasets
+    # via gguf
+    # via librosa
+    # via numba
+    # via outlines
+    # via pandas
+    # via pyarrow
+    # via scikit-learn
+    # via scipy
+    # via soxr
+    # via torchvision
+    # via transformers
+    # via vllm
+    # via xformers
+nvidia-cublas-cu12==12.1.3.1
+    # via nvidia-cudnn-cu12
+    # via nvidia-cusolver-cu12
+    # via torch
+nvidia-cuda-cupti-cu12==12.1.105
+    # via torch
+nvidia-cuda-nvrtc-cu12==12.1.105
+    # via torch
+nvidia-cuda-runtime-cu12==12.1.105
+    # via torch
+nvidia-cudnn-cu12==9.1.0.70
+    # via torch
+nvidia-cufft-cu12==11.0.2.54
+    # via torch
+nvidia-curand-cu12==10.3.2.106
+    # via torch
+nvidia-cusolver-cu12==11.4.5.107
+    # via torch
+nvidia-cusparse-cu12==12.1.0.106
+    # via nvidia-cusolver-cu12
+    # via torch
+nvidia-ml-py==12.560.30
+    # via vllm
+nvidia-nccl-cu12==2.20.5
+    # via torch
+nvidia-nvjitlink-cu12==12.6.20
+    # via nvidia-cusolver-cu12
+    # via nvidia-cusparse-cu12
+nvidia-nvtx-cu12==12.1.105
+    # via torch
+openai==1.42.0
+    # via vllm
+orjson==3.10.7
     # via fastapi
-packaging==24.0
+outlines==0.0.46
+    # via vllm
+packaging==24.1
+    # via datasets
     # via huggingface-hub
     # via ipykernel
-paramiko==3.4.0
+    # via lazy-loader
+    # via lm-format-enforcer
+    # via pooch
+    # via ray
+    # via transformers
+pandas==2.2.2
+    # via datasets
+paramiko==3.4.1
     # via runpod
-parso==0.8.3
+parso==0.8.4
     # via jedi
 pexpect==4.9.0
     # via ipython
 pfzy==0.3.4
     # via inquirerpy
-platformdirs==4.2.0
+pillow==10.4.0
+    # via torchvision
+    # via vllm
+platformdirs==4.2.2
     # via jupyter-core
-prettytable==3.10.0
+    # via pooch
+pooch==1.8.2
+    # via librosa
+prettytable==3.11.0
     # via runpod
-prompt-toolkit==3.0.43
+prometheus-client==0.20.0
+    # via prometheus-fastapi-instrumentator
+    # via vllm
+prometheus-fastapi-instrumentator==7.0.0
+    # via vllm
+prompt-toolkit==3.0.47
     # via inquirerpy
     # via ipython
-psutil==5.9.8
+protobuf==5.27.3
+    # via ray
+    # via vllm
+psutil==6.0.0
     # via ipykernel
+    # via vllm
 ptyprocess==0.7.0
     # via pexpect
-pure-eval==0.2.2
+pure-eval==0.2.3
     # via stack-data
 py-cpuinfo==9.0.0
     # via runpod
+    # via vllm
+pyairports==2.1.1
+    # via outlines
+pyarrow==17.0.0
+    # via datasets
 pycares==4.4.0
     # via aiodns
-pycparser==2.21
+pycountry==24.6.1
+    # via outlines
+pycparser==2.22
     # via cffi
-pydantic==2.6.4
+pydantic==2.8.2
     # via fastapi
+    # via lm-format-enforcer
+    # via openai
+    # via outlines
     # via pydantic-extra-types
     # via pydantic-settings
-pydantic-core==2.16.3
+    # via vllm
+pydantic-core==2.20.1
     # via pydantic
-pydantic-extra-types==2.6.0
+pydantic-extra-types==2.9.0
     # via fastapi
-pydantic-settings==2.2.1
+pydantic-settings==2.4.0
     # via fastapi
-pygments==2.17.2
+pygments==2.18.0
     # via ipython
+    # via rich
 pynacl==1.5.0
     # via paramiko
 python-dateutil==2.9.0.post0
     # via botocore
     # via jupyter-client
+    # via pandas
 python-dotenv==1.0.1
     # via pydantic-settings
     # via uvicorn
 python-multipart==0.0.9
     # via fastapi
-pyyaml==6.0.1
+pytz==2024.1
+    # via pandas
+pyyaml==6.0.2
+    # via datasets
     # via fastapi
     # via huggingface-hub
+    # via lm-format-enforcer
+    # via ray
+    # via transformers
     # via uvicorn
-pyzmq==25.1.2
+pyzmq==26.2.0
     # via ipykernel
     # via jupyter-client
-requests==2.31.0
+    # via vllm
+ray==2.34.0
+    # via vllm
+referencing==0.35.1
+    # via jsonschema
+    # via jsonschema-specifications
+    # via outlines
+regex==2024.7.24
+    # via tiktoken
+    # via transformers
+requests==2.32.3
+    # via datasets
     # via huggingface-hub
+    # via outlines
+    # via pooch
+    # via ray
     # via runpod
-runpod==1.6.2
-s3transfer==0.10.1
+    # via tiktoken
+    # via transformers
+    # via vllm
+rich==13.7.1
+    # via typer
+rpds-py==0.20.0
+    # via jsonschema
+    # via referencing
+ruff==0.6.2
+runpod==1.7.0
+s3transfer==0.10.2
     # via boto3
+safetensors==0.4.4
+    # via transformers
+scikit-learn==1.5.1
+    # via librosa
+scipy==1.14.1
+    # via librosa
+    # via scikit-learn
+sentencepiece==0.2.0
+    # via vllm
+shellingham==1.5.4
+    # via typer
 six==1.16.0
     # via asttokens
     # via python-dateutil
 sniffio==1.3.1
     # via anyio
     # via httpx
+    # via openai
+soundfile==0.12.1
+    # via librosa
+    # via vllm
+soxr==0.5.0
+    # via librosa
 stack-data==0.6.3
     # via ipython
-starlette==0.36.3
+starlette==0.38.2
     # via fastapi
+    # via prometheus-fastapi-instrumentator
+sympy==1.13.2
+    # via torch
+threadpoolctl==3.5.0
+    # via scikit-learn
+tiktoken==0.7.0
+    # via vllm
+tokenizers==0.19.1
+    # via transformers
+    # via vllm
 tomli==2.0.1
     # via runpod
-tomlkit==0.12.4
+tomlkit==0.13.2
     # via runpod
-tornado==6.4
+torch==2.4.0
+    # via torchvision
+    # via vllm
+    # via vllm-flash-attn
+    # via xformers
+torchvision==0.19.0
+    # via vllm
+tornado==6.4.1
     # via ipykernel
     # via jupyter-client
-tqdm==4.66.2
+tqdm==4.66.5
+    # via datasets
+    # via gguf
     # via huggingface-hub
+    # via openai
+    # via outlines
     # via tqdm-loggable
+    # via transformers
+    # via vllm
 tqdm-loggable==0.2
     # via runpod
-traitlets==5.14.2
+traitlets==5.14.3
     # via comm
     # via ipykernel
     # via ipython
     # via jupyter-client
     # via jupyter-core
     # via matplotlib-inline
-typing-extensions==4.10.0
+transformers==4.44.2
+    # via vllm
+triton==3.0.0
+    # via torch
+typer==0.12.5
+    # via fastapi-cli
+typing-extensions==4.12.2
     # via fastapi
     # via huggingface-hub
+    # via ipython
+    # via librosa
+    # via openai
+    # via outlines
     # via pydantic
     # via pydantic-core
-ujson==5.9.0
+    # via torch
+    # via typer
+    # via vllm
+tzdata==2024.1
+    # via pandas
+ujson==5.10.0
     # via fastapi
-urllib3==2.2.1
+urllib3==2.2.2
     # via botocore
     # via requests
     # via runpod
-uvicorn==0.28.1
+uvicorn==0.30.6
     # via fastapi
-uvloop==0.19.0
+    # via fastapi-cli
+    # via vllm
+uvloop==0.20.0
     # via uvicorn
-watchdog==4.0.0
+vllm==0.5.5
+vllm-flash-attn==2.6.1
+    # via vllm
+watchdog==4.0.2
     # via runpod
-watchfiles==0.21.0
+watchfiles==0.23.0
     # via uvicorn
 wcwidth==0.2.13
     # via prettytable
     # via prompt-toolkit
-websockets==12.0
+websockets==13.0
     # via uvicorn
+xformers==0.0.27.post2
+    # via vllm
+xxhash==3.5.0
+    # via datasets
 yarl==1.9.4
     # via aiohttp
+zipp==3.20.0
+    # via importlib-metadata
