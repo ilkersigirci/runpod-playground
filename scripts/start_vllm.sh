@@ -29,10 +29,7 @@ fi
 
 if ! uv pip show vllm >/dev/null 2>&1; then
     echo "******** Installing vllm and its required dependencies ********"
-    # TODO: When vllm 0.5.5 is released, remove transformers pinning
-    uv pip install vllm==0.5.1 vllm-flash-attn==2.5.9 accelerate "numpy<2.0.0" setuptools "transformers<=4.42.4"
-    # uv pip install wheel
-    # uv pip install flash-attn==2.5.8 --no-build-isolation
+    uv pip install vllm==0.5.5 accelerate setuptools
     # Alternative: From github main
     # uv pip install git+https://github.com/vllm-project/vllm#main
 fi
@@ -46,6 +43,9 @@ python -m vllm.entrypoints.openai.api_server \
     --port 8000 \
     --enable-prefix-caching \
     --gpu-memory-utilization 0.97 \
+    --num-scheduler-steps 8 \
+    --use-v2-block-manager \
+    --disable-log-stats \
     --tensor-parallel-size $GPU_COUNT \
     --max-model-len $MAX_CONTEXT_LEN \
     --model $MODEL_PATH \

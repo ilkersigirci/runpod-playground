@@ -121,6 +121,7 @@ gguf==0.9.1
 h11==0.14.0
     # via httpcore
     # via uvicorn
+hf-transfer==0.1.8
 httpcore==1.0.5
     # via httpx
 httptools==0.6.1
@@ -193,6 +194,7 @@ matplotlib-inline==0.1.7
     # via ipython
 mdurl==0.1.2
     # via markdown-it-py
+modelscope==1.17.1
 mpmath==1.3.0
     # via sympy
 msgpack==1.0.8
@@ -378,6 +380,7 @@ regex==2024.7.24
 requests==2.32.3
     # via datasets
     # via huggingface-hub
+    # via modelscope
     # via outlines
     # via pooch
     # via ray
@@ -403,6 +406,7 @@ scipy==1.14.1
     # via scikit-learn
 sentencepiece==0.2.0
     # via vllm
+setuptools==73.0.1
 shellingham==1.5.4
     # via typer
 six==1.16.0
@@ -449,6 +453,7 @@ tqdm==4.66.5
     # via datasets
     # via gguf
     # via huggingface-hub
+    # via modelscope
     # via openai
     # via outlines
     # via tqdm-loggable
@@ -487,6 +492,7 @@ ujson==5.10.0
     # via fastapi
 urllib3==2.2.2
     # via botocore
+    # via modelscope
     # via requests
     # via runpod
 uvicorn==0.30.6

@@ -13,7 +13,7 @@
       },
     ],
   },
-  "python.envFile": "", // Disable auto importing .env file values
+  // "python.envFile": "", // Disable auto importing .env file values
   "python.languageServer": "Pylance",
   // "python.analysis.autoImportCompletions": true,
   "autoDocstring.generateDocstringOnEnter": true,
