@@ -39,6 +39,7 @@ MODEL_PATH=$LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
 
 # --disable-sliding-window \
 # --num-scheduler-steps 8 \
+# --chat-template $LIBRARY_BASE_PATH/tabbyAPI/prompt_templates/codestral.jinja
 python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
