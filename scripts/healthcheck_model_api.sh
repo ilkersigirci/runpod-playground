@@ -42,7 +42,7 @@ if [ $? -eq 28 ]; then
 
     # Send message to Teams Chat
     MESSAGE="Request timed out. Hence, the model api is restarted."
-    TITLE="POD FAILURE"
+    TITLE="${TEAMS_MESSAGE_TITLE} - POD FAILURE"
 
     send_teams_message "$TEAMS_WEBHOOK_URL" "$MESSAGE" "$TITLE"
 
@@ -62,6 +62,6 @@ nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
 
 # Send message to Teams Chat
 MESSAGE="The model didn't correctly respond. Hence, the model api is restarted."
-TITLE="POD FAILURE"
+TITLE="${TEAMS_MESSAGE_TITLE} - POD FAILURE"
 
 send_teams_message "$TEAMS_WEBHOOK_URL" "$MESSAGE" "$TITLE"
