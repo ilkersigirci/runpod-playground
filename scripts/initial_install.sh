@@ -15,6 +15,9 @@ if [ ! -d $LIBRARY_BASE_PATH/.venv ]; then
     bash $LIBRARY_BASE_PATH/scripts/install_uv.sh
 fi
 
+# Load uv
+source $HOME/.cargo/env bash
+
 if ! uv pip show vllm >/dev/null 2>&1; then
     echo "******** Installing vllm and its required dependencies ********"
     uv sync --frozen
