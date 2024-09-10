@@ -3,10 +3,8 @@
 # Load .env file
 source /workspace/runpod-playground/.env
 
-# Create uv virtual environment
-if [ ! -d $LIBRARY_BASE_PATH/.venv ]; then
-    bash $LIBRARY_BASE_PATH/scripts/install_uv.sh
-fi
+# Run the initial install script
+bash $LIBRARY_BASE_PATH/scripts/initial_install.sh
 
 # Load uv
 source $HOME/.cargo/env bash
@@ -22,7 +20,10 @@ if [ ! $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME ]; then
     exit 0
 fi
 
-echo "******** Installing download dependencies ********"
-uv pip install python-dotenv huggingface-hub[cli] hf_transfer modelscope
+if ! uv pip show hf_transfer >/dev/null 2>&1; then
+    echo "******** Installing download dependencies ********"
+    uv pip install python-dotenv huggingface-hub[cli] hf_transfer modelscope
+fi
+
 echo "******** Downloading model ********"
 huggingface-cli download $DEPLOYED_MODEL_NAME --repo-type model --revision main --local-dir $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME

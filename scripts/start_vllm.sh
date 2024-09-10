@@ -10,10 +10,8 @@ fi
 # Load .env file
 source /workspace/runpod-playground/.env
 
-# Create uv virtual environment
-if [ ! -d $LIBRARY_BASE_PATH/.venv ]; then
-    bash $LIBRARY_BASE_PATH/scripts/install_uv.sh
-fi
+# Run the initial install script
+bash $LIBRARY_BASE_PATH/scripts/initial_install.sh
 
 # Load uv
 source $HOME/.cargo/env bash
@@ -39,13 +37,15 @@ MODEL_PATH=$LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
 
 # --disable-sliding-window \
 # --num-scheduler-steps 8 \
-# --chat-template $LIBRARY_BASE_PATH/tabbyAPI/prompt_templates/codestral.jinja
+# --enable-chunked-prefill \
+# --chat-template $LIBRARY_BASE_PATH/prompt_templates/codestral.jinja
 python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
     --enable-prefix-caching \
     --gpu-memory-utilization 0.90 \
     --use-v2-block-manager \
+    --num-scheduler-steps 8 \
     --disable-log-stats \
     --tensor-parallel-size $GPU_COUNT \
     --max-model-len $MAX_CONTEXT_LEN \

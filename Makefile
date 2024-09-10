@@ -5,7 +5,7 @@ SHELL=/bin/bash
 
 LIBRARY_BASE_PATH=/workspace/runpod-playground
 PYTHON=python
-DEPLOYED_MODEL_NAME=alpindale/WizardLM-2-8x22B
+DEPLOYED_MODEL_NAME=alpindale/c4ai-command-r-plus-GPTQ
 MAX_CONTEXT_LEN=32000
 
 .PHONY: help install
@@ -26,16 +26,13 @@ python-info: ## List information about the python environment
 	@which ${PYTHON}
 	@${PYTHON} --version
 
-update-pip:
-	${PYTHON} -m pip install -U pip
-
-install-rye: ## Install rye
-	! command -v rye &> /dev/null && curl -sSf https://rye.astral.sh/get | RYE_NO_AUTO_INSTALL=1 RYE_INSTALL_OPTION="--yes" bash
-	echo 'source "$$HOME/.rye/env"' >> ~/.bashrc
+install-uv:
+	! command -v uv &> /dev/null && curl -LsSf https://astral.sh/uv/install.sh | sh
+	# echo '. "$$HOME/.cargo/env"' >> ~/.bashrc
 
 install: ## Installs the development version of the package
-	$(MAKE) install-rye
-	rye sync --no-lock
+	$(MAKE) install-uv
+	uv sync --frozen
 
 change-model-env: ## Change the model that is specified in the .env file
 	# sed -i 's/DEPLOYED_MODEL_NAME=alpindale\/WizardLM-2-8x22B/DEPLOYED_MODEL_NAME=CohereForAI\/c4ai-command-r-v01/g' .env
