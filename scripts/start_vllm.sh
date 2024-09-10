@@ -44,7 +44,7 @@ python -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
     --port 8000 \
     --enable-prefix-caching \
-    --gpu-memory-utilization 0.97 \
+    --gpu-memory-utilization 0.90 \
     --use-v2-block-manager \
     --disable-log-stats \
     --tensor-parallel-size $GPU_COUNT \
