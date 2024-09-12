@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load .env file
-source /workspace/runpod-playground/.env
+source $(dirname "$(realpath "$0")")/../.env
 
 # Run the initial install script
 bash $LIBRARY_BASE_PATH/scripts/initial_install.sh

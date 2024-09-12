@@ -267,3 +267,4 @@ cython_debug/
 /.ruff_cache/
 models
 huggingface
+*.txt

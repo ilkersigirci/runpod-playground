@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load .env file
-source /workspace/runpod-playground/.env
+source $(dirname "$(realpath "$0")")/../.env
 
 cd $LIBRARY_BASE_PATH
 

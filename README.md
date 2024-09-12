@@ -2,11 +2,8 @@
 
 ## Steps
 
-- In `.env` file `API_ENDPOINT` should be set the runpod endpoint.
-  - Example: `API_ENDPOINT=https://1rvt8fq3evjipt-8000.proxy.runpod.net`
-    - Note that there is **no trailing slash** at the end of the url. 
-  - To find this url go to `https://www.runpod.io/console/pods`
-  - Select your running pod -> Connect -> Copy url of `Connect to HTTP Service [Port 8000]`
+- Api healthcheck is enabled by default, which sends a message to the vllm server in fixed period of time.
+  - To disable healthcheck, `ENABLE_HEALTH_CHECK=0` should be set in `.env` file.
 - To send the healthcheck failure message to Microsoft Teams, `TEAMS_WEBHOOK_URL` should be set in `.env` file.
   - Example: `TEAMS_WEBHOOK_URL=https://outlook.office.com/webhook/...`
 
@@ -42,10 +39,10 @@ make change-max-context-len-env MAX_CONTEXT_LEN=40000
 
 ```bash
 curl --request POST \
-    --url https://1rvt8fq3evjipt-8000.proxy.runpod.net/v1/chat/completions \
+    --url http://0.0.0.0:8000/v1/chat/completions \
     --header "Content-Type: application/json" \
     --data '{
-  "model": "Mixtral-8x7B-Instruct-v0.1",
+  "model": "c4ai-command-r-plus-GPTQ",
   "messages": [
   {
       "role": "system",
@@ -65,10 +62,10 @@ curl --request POST \
 
 ```bash
 curl --request POST \
-    --url https://1rvt8fq3evjipt-8000.proxy.runpod.net/v1/chat/completions \
+    --url http://0.0.0.0:8000/v1/chat/completions \
     --header "Content-Type: application/json" \
     --data '{
-  "model": "Mixtral-8x7B-Instruct-v0.1",
+  "model": "c4ai-command-r-plus-GPTQ",
   "messages": [
   {
     "role": "user",

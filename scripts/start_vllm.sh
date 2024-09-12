@@ -8,7 +8,7 @@ if ! command -v nvtop >/dev/null 2>&1; then
 fi
 
 # Load .env file
-source /workspace/runpod-playground/.env
+source $(dirname "$(realpath "$0")")/../.env
 
 # Run the initial install script
 bash $LIBRARY_BASE_PATH/scripts/initial_install.sh

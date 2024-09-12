@@ -21,6 +21,7 @@ dev-dependencies = [
     "ipykernel>=6.29.5",
     "ruff>=0.6.4",
     "setuptools>=74.1.2",
+    "streamlit>=1.38.0",
 ]
 
 [tool.ruff]

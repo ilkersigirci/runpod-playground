@@ -5,7 +5,7 @@
 #########
 
 # Load .env file
-source /workspace/runpod-playground/.env
+source $(dirname "$(realpath "$0")")/../.env
 
 # Define the full path to your script
 SCRIPT_PATH="$1"

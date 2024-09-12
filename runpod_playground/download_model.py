@@ -5,7 +5,7 @@ from huggingface_hub import snapshot_download
 
 
 def download_model_hf(
-    repo_id: str = "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    repo_id: str = "alpindale/c4ai-command-r-plus-GPTQ",
     revision: str = "main",
     ignore_patterns: list[str] | None = None,
 ) -> None:
@@ -30,15 +30,6 @@ if __name__ == "__main__":
     load_dotenv()
 
     DEPLOYED_MODEL_NAME = os.getenv("DEPLOYED_MODEL_NAME", "alpindale/WizardLM-2-8x22B")
-
-    # DEPLOYED_MODEL_NAME = "mistralai/Mixtral-8x22B-Instruct-v0.1"
-    # DEPLOYED_MODEL_NAME = "alpindale/WizardLM-2-8x22B"
-    # DEPLOYED_MODEL_NAME = "turboderp/TinyLlama-1B-exl2"
-    # DEPLOYED_MODEL_NAME = "CohereForAI/c4ai-command-r-plus"
-    # DEPLOYED_MODEL_NAME = "Trendyol/Trendyol-LLM-7b-base-v0.1"
-    # DEPLOYED_MODEL_NAME = "sambanovasystems/SambaLingo-Turkish-Chat"
-    # DEPLOYED_MODEL_NAME = "microsoft/Phi-3-mini-128k-instruct"
-
     revision = "main"
     # revision = "6.0bpw"
 
