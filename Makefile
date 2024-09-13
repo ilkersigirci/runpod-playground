@@ -65,4 +65,11 @@ send-chat-message: ## Send a chat message to the VLLM server
 	bash ${LIBRARY_BASE_PATH}/scripts/send_api_chat_message.sh send_message_with_system
 
 gui: ## Start the GUI
-	nohup uv run streamlit run --server.address 0.0.0.0 --server.port 5000 runpod_playground/gui/main.py > streamlit_log.txt 2>&1 &
+	source $$HOME/.cargo/env bash
+
+	nohup uv run streamlit run \
+		--server.address 0.0.0.0 \
+		--server.port 5000 \
+		--server.enableCORS=false \
+		--server.enableXsrfProtection=false \
+		runpod_playground/gui/main.py > streamlit_log.txt 2>&1 &

@@ -12,6 +12,9 @@ cd /workspace
 git clone https://github.com/ilkersigirci/runpod-playground.git
 cd /workspace/runpod-playground
 
+# Initial dependency install
+make install
+
 # Download model
 make download-model
 
@@ -23,6 +26,9 @@ make log-vllm
 
 # Restart vllm
 make restart-vllm
+
+# Start the simple gui
+make gui
 ```
 
 - To deploy different model, in `.env` file, change `DEPLOYED_MODEL_NAME` variable to the model name you want to deploy by following hunggingface repository id convention.
