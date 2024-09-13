@@ -25,12 +25,12 @@ if [ ! -d $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME ]; then
     bash $LIBRARY_BASE_PATH/scripts/download_model.sh
 fi
 
-if ! uv pip show vllm >/dev/null 2>&1; then
-    echo "******** Installing vllm and its required dependencies ********"
-    uv pip install vllm==0.5.5 accelerate setuptools
-    # Alternative: From github main
-    # uv pip install git+https://github.com/vllm-project/vllm#main
-fi
+# if ! uv pip show vllm >/dev/null 2>&1; then
+#     echo "******** Installing vllm and its required dependencies ********"
+#     uv pip install vllm==0.6.0 accelerate setuptools
+#     # Alternative: From github main
+#     # uv pip install git+https://github.com/vllm-project/vllm#main
+# fi
 
 GPU_COUNT=$(nvidia-smi --query-gpu=count --format=csv,noheader,nounits | head -n 1)
 MODEL_PATH=$LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME

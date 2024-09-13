@@ -11,6 +11,17 @@ if [ "$ENABLE_HEALTH_CHECK" = "0" ]; then
     exit 1
 fi
 
+response=$(send_health_check_message)
+
+for i in {1..3}; do
+    if [ "$response" -eq 200 ]; then
+        break
+    fi
+    echo "Attempt $i: Waiting for health endpoint to be available..."
+    sleep 10
+    response=$(send_health_check_message)
+done
+
 RESPONSE=$(send_guided_regex_message)
 
 # Check if the curl command timed out
