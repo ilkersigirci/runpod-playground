@@ -595,6 +595,15 @@ wheels = [
 ]
 
 [[package]]
+name = "einops"
+version = "0.8.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/79/ca/9f5dcb8bead39959454c3912266bedc4c315839cee0e0ca9f4328f4588c1/einops-0.8.0.tar.gz", hash = "sha256:63486517fed345712a8385c100cb279108d9d47e6ae59099b07657e983deae85", size = 58861 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/44/5a/f0b9ad6c0a9017e62d4735daaeb11ba3b6c009d69a26141b258cd37b5588/einops-0.8.0-py3-none-any.whl", hash = "sha256:9572fb63046264a862693b0a87088af3bdc8c068fde03de63453cbbde245465f", size = 43223 },
+]
+
+[[package]]
 name = "email-validator"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -618,16 +627,16 @@ wheels = [
 
 [[package]]
 name = "fastapi"
-version = "0.114.0"
+version = "0.114.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic" },
     { name = "starlette" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/20/1b/fb621a3bab915ac1c9ad06943eb5a2b2aa01cd63228d524bd45261278787/fastapi-0.114.0.tar.gz", hash = "sha256:9908f2a5cc733004de6ca5e1412698f35085cefcbfd41d539245b9edf87b73c1", size = 295297 }
+sdist = { url = "https://files.pythonhosted.org/packages/d6/c7/cf41c991257e9babc429ae0c2c48f5315154e8b94c8ba475dc0247718741/fastapi-0.114.2.tar.gz", hash = "sha256:0adb148b62edb09e8c6eeefa3ea934e8f276dabc038c5a82989ea6346050c3da", size = 295481 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d0/80/17037f322c280efbc623e341358d38d0299c6ee899d619a879b3593aa6da/fastapi-0.114.0-py3-none-any.whl", hash = "sha256:fee75aa1b1d3d73f79851c432497e4394e413e1dece6234f68d3ce250d12760a", size = 94013 },
+    { url = "https://files.pythonhosted.org/packages/b6/2b/15ac29e524bf0dc8fcf8e90364c05709b3d4fa810a86421c6924ea18cccd/fastapi-0.114.2-py3-none-any.whl", hash = "sha256:44474a22913057b1acb973ab90f4b671ba5200482e7622816d79105dcece1ac5", size = 94049 },
 ]
 
 [package.optional-dependencies]
@@ -1193,18 +1202,20 @@ wheels = [
 
 [[package]]
 name = "mistral-common"
-version = "1.3.4"
+version = "1.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jsonschema" },
+    { name = "pillow" },
     { name = "pydantic" },
+    { name = "requests" },
     { name = "sentencepiece" },
     { name = "tiktoken" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/36/31/6583991c14e5d4f833c6af4448d91bda9a8e12f516d67d221ea214afd6ee/mistral_common-1.3.4.tar.gz", hash = "sha256:bfed8f66de46a4cf397ef963a478256b445281c8167b6b466f30148b63fe736b", size = 3232623 }
+sdist = { url = "https://files.pythonhosted.org/packages/41/70/eeb44c3e9df1b0670f0df91fd76f459bc0690a9c2f1bf53f6f8ee4289841/mistral_common-1.4.0.tar.gz", hash = "sha256:0bda6a1f301d5aef8927804ad6a8480fcef5f7fc15aecece3308cf60039bab3c", size = 5804494 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0c/e2/11d7223b4f898ff96f1bcf4ca29765e3e5ff9d9c049a2c640c59534450f1/mistral_common-1.3.4-py3-none-any.whl", hash = "sha256:e677232f9952da0d0f402bb8f2673f26eafddca96c36637d770cd63c2f370d57", size = 3333626 },
+    { url = "https://files.pythonhosted.org/packages/2b/84/fceccc71342fb23ae4572c9c85670110e398d6dc3bcd7167ed3d681251d5/mistral_common-1.4.0-py3-none-any.whl", hash = "sha256:5e2a13a039e2f4b25c3cef66a7b1ca3deabb2af04250ecf2a9ae9c18215eaec3", size = 6013815 },
 ]
 
 [[package]]
@@ -2462,7 +2473,7 @@ requires-dist = [
     { name = "huggingface-hub", extras = ["cli"] },
     { name = "modelscope", specifier = ">=1.18.0" },
     { name = "runpod", specifier = ">=0.24.6" },
-    { name = "vllm", specifier = ">=0.6.0" },
+    { name = "vllm", specifier = ">=0.6.1.post2" },
 ]
 
 [package.metadata.requires-dev]
@@ -3028,10 +3039,11 @@ wheels = [
 
 [[package]]
 name = "vllm"
-version = "0.6.0"
+version = "0.6.1.post2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
+    { name = "einops" },
     { name = "fastapi" },
     { name = "filelock" },
     { name = "gguf" },
@@ -3056,6 +3068,7 @@ dependencies = [
     { name = "ray" },
     { name = "requests" },
     { name = "sentencepiece" },
+    { name = "six", marker = "python_full_version >= '3.12'" },
     { name = "tiktoken" },
     { name = "tokenizers" },
     { name = "torch" },
@@ -3067,9 +3080,9 @@ dependencies = [
     { name = "vllm-flash-attn", marker = "platform_machine == 'x86_64' and platform_system == 'Linux'" },
     { name = "xformers", marker = "platform_machine == 'x86_64' and platform_system == 'Linux'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/09/14/4dd0f508e8bb6d37f86feb4f588734bc7c9275c7b077b4ee0ab3e8103b7c/vllm-0.6.0.tar.gz", hash = "sha256:40c573bc5e4124d34f4de02af8e23a584e51de66ae17cd5910af0cf63ee26eaa", size = 1213370 }
+sdist = { url = "https://files.pythonhosted.org/packages/73/e5/789b8254dc317ee66504d8a831c833b719ce1218640955ffec904ad1734a/vllm-0.6.1.post2.tar.gz", hash = "sha256:1766f99c6a46849124685abd47e4450d6bfd119ca477fa83f16553e213cb8b6a", size = 1261179 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0c/32/9b170365860d85fca85b27135dbbc1a9cd0fba0cdca0cef574443300da24/vllm-0.6.0-cp38-abi3-manylinux1_x86_64.whl", hash = "sha256:6d68104d8fd5e5406d1c6f22729d46a9acd2963a00d3452ff7f8a710734c580d", size = 170617691 },
+    { url = "https://files.pythonhosted.org/packages/0f/fc/e218785bf6b93a21843b97dc5a674da58cc8f5364867bd47a26d78f73dba/vllm-0.6.1.post2-cp38-abi3-manylinux1_x86_64.whl", hash = "sha256:d99c8102c719f54171ca014d40232dea7d62756e07e4b0993a8ea99bae3b2866", size = 170658652 },
 ]
 
 [[package]]

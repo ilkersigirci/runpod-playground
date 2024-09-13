@@ -13,7 +13,7 @@ dependencies = [
     "huggingface-hub[cli]",
     "modelscope>=1.18.0",
     "runpod>=0.24.6",
-    "vllm>=0.6.0",
+    "vllm>=0.6.1.post2",
 ]
 
 [tool.uv]
