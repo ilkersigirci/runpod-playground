@@ -29,8 +29,8 @@ if echo "$RESPONSE" | grep -q "Request timed out."; then
     if [ "$ENABLE_AUTO_RESTART" = "1" ]; then
         pgrep -f 'run_preodically_basic|vllm.entrypoints' | xargs -r kill -9
         sleep 3
-        nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
-        nohup bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
+        nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log_$(date +%Y%m%d_%H%M%S).txt 2>&1 &
+        nohup bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically_$(date +%Y%m%d_%H%M%S).txt 2>&1 &
     fi
 
     # Send message to Teams Chat
@@ -55,8 +55,8 @@ echo "API response did not contain '200 OK'."
 if [ "$ENABLE_AUTO_RESTART" = "1" ]; then
     pgrep -f 'run_preodically_basic|vllm.entrypoints' | xargs -r kill -9
     sleep 3
-    nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
-    nohup bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
+    nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log_$(date +%Y%m%d_%H%M%S).txt 2>&1 &
+    nohup bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically_$(date +%Y%m%d_%H%M%S).txt 2>&1 &
 fi
 
 # Send message to Teams Chat
