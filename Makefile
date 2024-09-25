@@ -53,7 +53,8 @@ start-vllm: ## Start the VLLM server
 	nohup bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
 
 stop-vllm: ## Stop the VLLM server
-	pkill -f 'run_preodically_basic|vllm.entrypoints'
+	pgrep -f 'run_preodically_basic|vllm.entrypoints' | xargs -r kill -9
+	# pkill -f 'run_preodically_basic|vllm.entrypoints'
 
 restart-vllm: ## Stops and starts the VLLM server
 	$(MAKE) stop-vllm
