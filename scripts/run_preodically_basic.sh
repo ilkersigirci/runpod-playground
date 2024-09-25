@@ -12,17 +12,12 @@ fi
 SCRIPT_PATH="$1"
 
 # Define the frequency of execution (default every 5 minutes)
-SCHEDULE="$2"
-
-if [ -z "$SCHEDULE" ]; then
-    SCHEDULE=300
-fi
 
 # Ensure the script is executable
 chmod +x "$SCRIPT_PATH"
 
 # First wait for the specified delay before the first execution
-sleep $SCHEDULE
+sleep $HEALTHCHECK_INITIAL_TIME
 
 # Infinite loop to run the script periodically
 while true; do
@@ -30,5 +25,5 @@ while true; do
   bash "$SCRIPT_PATH"
   
   # Wait for the specified delay before the next execution
-  sleep $SCHEDULE
+  sleep $HEALTHCHECK_INTERVAL
 done
