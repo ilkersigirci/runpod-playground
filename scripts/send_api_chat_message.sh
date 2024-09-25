@@ -3,8 +3,6 @@
 # Load .env file
 source $(dirname "$(realpath "$0")")/../.env
 
-SERVED_MODEL_NAME="${DEPLOYED_MODEL_NAME#*/}"
-
 send_health_check_message() {
     local response=$(curl -s -o /dev/null -w "%{http_code}" "$API_ENDPOINT/health")
 

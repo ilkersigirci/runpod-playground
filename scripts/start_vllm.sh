@@ -20,7 +20,6 @@ source $HOME/.cargo/env bash
 source $LIBRARY_BASE_PATH/.venv/bin/activate
 
 # Download model if not already present
-SERVED_MODEL_NAME="${DEPLOYED_MODEL_NAME#*/}"
 if [ ! -d $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME ]; then
     bash $LIBRARY_BASE_PATH/scripts/download_model.sh
 fi

@@ -29,7 +29,7 @@ def download_model_hf(
 if __name__ == "__main__":
     load_dotenv()
 
-    DEPLOYED_MODEL_NAME = os.getenv("DEPLOYED_MODEL_NAME", "alpindale/WizardLM-2-8x22B")
+    HF_MODEL_NAME = os.getenv("HF_MODEL_NAME", "alpindale/c4ai-command-r-plus-GPTQ")
     revision = "main"
     # revision = "6.0bpw"
 
@@ -37,5 +37,5 @@ if __name__ == "__main__":
     ignore_patterns = ["*.pt", "*.bin"]
 
     download_model_hf(
-        repo_id=DEPLOYED_MODEL_NAME, revision=revision, ignore_patterns=ignore_patterns
+        repo_id=HF_MODEL_NAME, revision=revision, ignore_patterns=ignore_patterns
     )

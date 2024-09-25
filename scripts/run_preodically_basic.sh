@@ -3,6 +3,11 @@
 # Load .env file
 source $(dirname "$(realpath "$0")")/../.env
 
+if [ "$ENABLE_HEALTH_CHECK" = "0" ]; then
+    echo "HEALTH CHECK IS DISABLED."
+    exit 1
+fi
+
 # Define the full path to your script
 SCRIPT_PATH="$1"
 

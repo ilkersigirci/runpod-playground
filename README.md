@@ -31,12 +31,13 @@ make restart-vllm
 make gui
 ```
 
-- To deploy different model, in `.env` file, change `DEPLOYED_MODEL_NAME` variable to the model name you want to deploy by following hunggingface repository id convention.
+- To deploy different model, in `.env` file, change `HF_MODEL_NAME` variable to the model name you want to deploy by following hunggingface repository id convention.
+- Also you can change `SERVED_MODEL_NAME` to specify model name for requests.
 - One can also change `MAX_CONTEXT_LEN` variable to the desired context length.
-- Example: Change default model and its context length to CohereForAI/c4ai-command-r-v01
+- Example: Change default model and its context length to CohereForAI/c4ai-command-r-plus-GPTQ
 
 ```bash
-make change-model-env DEPLOYED_MODEL_NAME=CohereForAI/c4ai-command-r-v01
+make change-model-env HF_MODEL_NAME=CohereForAI/c4ai-command-r-plus-GPTQ
 make change-max-context-len-env MAX_CONTEXT_LEN=40000
 
 ```

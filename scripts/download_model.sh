@@ -13,7 +13,7 @@ source $HOME/.cargo/env bash
 source $LIBRARY_BASE_PATH/.venv/bin/activate
 
 # Download model if not already present
-SERVED_MODEL_NAME="${DEPLOYED_MODEL_NAME#*/}"
+# SERVED_MODEL_NAME="${HF_MODEL_NAME#*/}"
 
 if [ ! $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME ]; then
     echo "******** $SERVED_MODEL_NAME already downloaded ********"
@@ -26,4 +26,4 @@ if ! uv pip show hf_transfer >/dev/null 2>&1; then
 fi
 
 echo "******** Downloading model ********"
-huggingface-cli download $DEPLOYED_MODEL_NAME --repo-type model --revision main --local-dir $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
+huggingface-cli download $HF_MODEL_NAME --repo-type model --revision main --local-dir $LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME

@@ -26,14 +26,18 @@ RESPONSE=$(send_guided_regex_message)
 
 # Check if the curl command timed out
 if echo "$RESPONSE" | grep -q "Request timed out."; then
-    pkill -f vllm.entrypoints
-    nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
+    if [ "$ENABLE_AUTO_RESTART" = "1" ]; then
+        pkill -f vllm.entrypoints
+        nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
+    fi
 
     # Send message to Teams Chat
     MESSAGE="Request timed out. Hence, the model api is restarted."
     TITLE="${TEAMS_MESSAGE_TITLE} - POD FAILURE"
 
-    send_teams_message "$TEAMS_WEBHOOK_URL" "$MESSAGE" "$TITLE"
+    if [ "$ENABLE_TEAMS_NOTIFICATION" = "1" ]; then
+        send_teams_message "$TEAMS_WEBHOOK_URL" "$MESSAGE" "$TITLE"
+    fi
 
     exit 1
 fi
@@ -46,11 +50,15 @@ fi
 
 echo "API response did not contain '200 OK'."
 
-pkill -f vllm.entrypoints
-nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
+if [ "$ENABLE_AUTO_RESTART" = "1" ]; then
+    pkill -f vllm.entrypoints
+    nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log.txt 2>&1 &
+fi
 
 # Send message to Teams Chat
 MESSAGE="The model didn't correctly respond. Hence, the model api is restarted."
 TITLE="${TEAMS_MESSAGE_TITLE} - POD FAILURE"
 
-send_teams_message "$TEAMS_WEBHOOK_URL" "$MESSAGE" "$TITLE"
+if [ "$ENABLE_TEAMS_NOTIFICATION" = "1" ]; then
+    send_teams_message "$TEAMS_WEBHOOK_URL" "$MESSAGE" "$TITLE"
+fi

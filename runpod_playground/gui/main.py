@@ -3,16 +3,15 @@ import os
 import streamlit as st
 from openai import OpenAI
 
-DEPLOYED_MODEL_NAME = os.getenv("DEPLOYED_MODEL_NAME", None)
+HF_MODEL_NAME = os.getenv("HF_MODEL_NAME", None)
+SERVED_MODEL_NAME = os.getenv("SERVED_MODEL_NAME", None)
 API_ENDPOINT = os.getenv("API_ENDPOINT", None)
 
-if DEPLOYED_MODEL_NAME is None or API_ENDPOINT is None:
+if HF_MODEL_NAME is None or SERVED_MODEL_NAME is None or API_ENDPOINT is None:
     st.error(
-        "Please set the DEPLOYED_MODEL_NAME and API_ENDPOINT environment variables."
+        "Please set the HF_MODEL_NAME, SERVED_MODEL_NAME and API_ENDPOINT environment variables."
     )
     st.stop()
-
-SERVED_MODEL_NAME = DEPLOYED_MODEL_NAME.split("/")[-1]
 
 st.title("VLLM Server Test")
 
