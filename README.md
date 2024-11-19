@@ -13,7 +13,7 @@ git clone https://github.com/ilkersigirci/runpod-playground.git
 cd /workspace/runpod-playground
 
 # Initial dependency install
-make install
+make initial-runpod-install
 
 # Download model
 make download-model

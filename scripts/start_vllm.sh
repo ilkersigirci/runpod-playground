@@ -36,7 +36,6 @@ MODEL_PATH=$LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
 
 # --disable-sliding-window \
 # --num-scheduler-steps 8 \
-# --use-v2-block-manager \
 # --enable-chunked-prefill \
 # --chat-template $LIBRARY_BASE_PATH/prompt_templates/codestral.jinja
 python -m vllm.entrypoints.openai.api_server \
