@@ -14,7 +14,7 @@ source $(dirname "$(realpath "$0")")/../.env
 bash $LIBRARY_BASE_PATH/scripts/initial_install.sh
 
 # Load uv
-source $HOME/.cargo/env bash
+source $HOME/.local/bin/env bash
 
 # Activate uv's virtual environment
 source $LIBRARY_BASE_PATH/.venv/bin/activate

@@ -11,17 +11,10 @@ dependencies = [
     "accelerate>=0.34.2",
     "hf-transfer>=0.1.8",
     "huggingface-hub[cli]",
+    "mistral-common>=1.5.0",
     "modelscope>=1.18.0",
     "runpod>=0.24.6",
-    "vllm>=0.6.1.post2",
-]
-
-[tool.uv]
-dev-dependencies = [
-    "ipykernel>=6.29.5",
-    "ruff>=0.6.4",
-    "setuptools>=74.1.2",
-    "streamlit>=1.38.0",
+    "vllm>=0.6.4.post1",
 ]
 
 [tool.ruff]
@@ -81,3 +74,11 @@ max-complexity = 10
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+    "ruff>=0.6.4",
+    "setuptools>=74.1.2",
+    "streamlit>=1.38.0",
+]

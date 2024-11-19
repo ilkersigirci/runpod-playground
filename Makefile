@@ -26,7 +26,7 @@ python-info: ## List information about the python environment
 
 install-uv:
 	! command -v uv &> /dev/null && curl -LsSf https://astral.sh/uv/install.sh | sh
-	# echo '. "$$HOME/.cargo/env"' >> ~/.bashrc
+	# echo '. "$$HOME/.local/bin/env"' >> ~/.bashrc
 
 install-package: ## Installs the development version of the package
 	$(MAKE) install-uv
@@ -68,7 +68,7 @@ send-chat-message: ## Send a chat message to the VLLM server
 	bash ${LIBRARY_BASE_PATH}/scripts/send_api_chat_message.sh send_message_with_system
 
 gui: ## Start the GUI
-	source $$HOME/.cargo/env bash
+	source $$HOME/.local/bin/env bash
 
 	nohup uv run streamlit run \
 		--server.address 0.0.0.0 \

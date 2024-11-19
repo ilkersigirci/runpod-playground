@@ -18,7 +18,7 @@ if ! command -v uv >/dev/null 2>&1; then
     echo "******** Installing uv ********"
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
-    source $HOME/.cargo/env bash
+    source $HOME/.local/bin/env bash
 
     # echo "******** Installing python$DEPLOYED_PYTHON_VERSION ********"
     # uv python install $DEPLOYED_PYTHON_VERSION

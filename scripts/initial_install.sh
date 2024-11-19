@@ -16,7 +16,7 @@ if [ ! -d $LIBRARY_BASE_PATH/.venv ]; then
 fi
 
 # Load uv
-source $HOME/.cargo/env bash
+source $HOME/.local/bin/env bash
 
 if ! uv pip show vllm >/dev/null 2>&1; then
     echo "******** Installing vllm and its required dependencies ********"
