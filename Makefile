@@ -3,7 +3,6 @@
 .ONESHELL:
 SHELL=/bin/bash
 
-LIBRARY_BASE_PATH=/workspace/runpod-playground
 PYTHON=python
 
 .PHONY: help install gui
@@ -51,14 +50,14 @@ install-package: ## Installs the development version of the package
 	uv sync --frozen
 
 initial-runpod-install: ## Install necessary tools and packages for Runpod, also install project dependencies
-	nohup bash ${LIBRARY_BASE_PATH}/scripts/initial_install.sh > initial_runpod_install_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
+	nohup bash ./scripts/initial_install.sh > initial_runpod_install_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
 
 download-model: ## Download the model that is specified in the .env file
-	nohup bash ${LIBRARY_BASE_PATH}/scripts/download_model.sh > download_model_log_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
+	nohup bash ./scripts/download_model.sh > download_model_log_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
 
 start-vllm: ## Start the VLLM server
-	nohup bash ${LIBRARY_BASE_PATH}/scripts/start_vllm.sh > vllm_log_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
-	nohup bash ${LIBRARY_BASE_PATH}/scripts/run_preodically_basic.sh ${LIBRARY_BASE_PATH}/scripts/healthcheck_model_api.sh > healthcheck_periodically_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
+	nohup bash ./scripts/start_vllm.sh > vllm_log_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
+	nohup bash ./scripts/run_preodically_basic.sh ./scripts/healthcheck_model_api.sh > healthcheck_periodically_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &
 
 stop-vllm: ## Stop the VLLM server
 	pgrep -f 'run_preodically_basic|vllm.entrypoints' | xargs -r kill -9
@@ -73,7 +72,7 @@ log-vllm: ## Show the log of the VLLM server, only the last log file
 	tail -f -n 100 $$last_log_file
 
 send-chat-message: ## Send a chat message to the VLLM server
-	bash ${LIBRARY_BASE_PATH}/scripts/send_api_chat_message.sh send_message_with_system
+	bash ./scripts/send_api_chat_message.sh send_message_with_system
 
 gui: ## Start the GUI
 	source $$HOME/.local/bin/env bash
