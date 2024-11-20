@@ -24,13 +24,13 @@ python-info: ## List information about the python environment
 	@which ${PYTHON}
 	@${PYTHON} --version
 
-install-uv:
-	! command -v uv &> /dev/null && curl -LsSf https://astral.sh/uv/install.sh | sh
-	# echo '. "$$HOME/.local/bin/env"' >> ~/.bashrc
+change-paths-in-env-file: ## Change the path in the .env file with the current working directory
+	@CWD=$$(pwd)
+	sed -i "s|DUMMY_PATH|$$CWD|g" .env
 
-install-package: ## Installs the development version of the package
-	$(MAKE) install-uv
-	uv sync --frozen
+prepare-env-file:  ## Copy .env.example to .env and correct the paths
+	cp .env.example .env
+	$(MAKE) change-paths-in-env-file
 
 change-model-env: ## Change the model that is specified in the .env file
 	# sed -i 's/HF_MODEL_NAME=alpindale\/WizardLM-2-8x22B/HF_MODEL_NAME=CohereForAI\/c4ai-command-r-v01/g' .env
@@ -41,6 +41,14 @@ change-max-context-len-env: ## Change the max context length that is specified i
 	# sed -i 's/MAX_CONTEXT_LEN=32000/MAX_CONTEXT_LEN=40000/g' .env
 	sed -i '/MAX_CONTEXT_LEN=/d' .env
 	echo "MAX_CONTEXT_LEN=${MAX_CONTEXT_LEN}" >> .env
+
+install-uv:
+	! command -v uv &> /dev/null && curl -LsSf https://astral.sh/uv/install.sh | sh
+	# echo '. "$$HOME/.local/bin/env"' >> ~/.bashrc
+
+install-package: ## Installs the development version of the package
+	$(MAKE) install-uv
+	uv sync --frozen
 
 initial-runpod-install: ## Install necessary tools and packages for Runpod, also install project dependencies
 	nohup bash ${LIBRARY_BASE_PATH}/scripts/initial_install.sh > initial_runpod_install_$(shell date +%Y%m%d_%H%M%S).txt 2>&1 &

@@ -268,4 +268,4 @@ cython_debug/
 models
 huggingface
 *.txt
-.env.local
+.env
