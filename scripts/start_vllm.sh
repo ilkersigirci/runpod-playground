@@ -38,7 +38,10 @@ MODEL_PATH=$LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
 # --num-scheduler-steps 8 \
 # --enable-chunked-prefill \
 # --chat-template $LIBRARY_BASE_PATH/prompt_templates/codestral.jinja
-python -m vllm.entrypoints.openai.api_server \
+
+# python -m vllm.entrypoints.openai.api_server \
+vllm serve $MODEL_PATH \
+    --served-model-name $SERVED_MODEL_NAME \
     --host 0.0.0.0 \
     --port 8000 \
     --enable-prefix-caching \
@@ -47,6 +50,4 @@ python -m vllm.entrypoints.openai.api_server \
     --disable-frontend-multiprocessing \
     --disable-async-output-proc \
     --tensor-parallel-size $GPU_COUNT \
-    --max-model-len $MAX_CONTEXT_LEN \
-    --model $MODEL_PATH \
-    --served-model-name $SERVED_MODEL_NAME
+    --max-model-len $MAX_CONTEXT_LEN

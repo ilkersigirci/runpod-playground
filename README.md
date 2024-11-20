@@ -2,11 +2,6 @@
 
 ## Steps
 
-- Api healthcheck is enabled by default, which sends a message to the vllm server in fixed period of time.
-  - To disable healthcheck, `ENABLE_HEALTH_CHECK=0` should be set in `.env` file.
-- To send the healthcheck failure message to Microsoft Teams, `TEAMS_WEBHOOK_URL` should be set in `.env` file.
-  - Example: `TEAMS_WEBHOOK_URL=https://outlook.office.com/webhook/...`
-
 ```bash
 cd /workspace
 git clone https://github.com/ilkersigirci/runpod-playground.git
@@ -34,6 +29,10 @@ make restart-vllm
 make gui
 ```
 
+- Api healthcheck is enabled by default, which sends a message to the vllm server in fixed period of time.
+  - To disable healthcheck, `ENABLE_HEALTH_CHECK=0` should be set in `.env` file.
+- To send the healthcheck failure message to Microsoft Teams, `TEAMS_WEBHOOK_URL` should be set in `.env` file.
+  - Example: `TEAMS_WEBHOOK_URL=https://outlook.office.com/webhook/...`
 - To deploy different model, in `.env` file, change `HF_MODEL_NAME` variable to the model name you want to deploy by following hunggingface repository id convention.
 - Also you can change `SERVED_MODEL_NAME` to specify model name for requests.
 - One can also change `MAX_CONTEXT_LEN` variable to the desired context length.
@@ -45,7 +44,9 @@ make change-max-context-len-env MAX_CONTEXT_LEN=40000
 
 ```
 
-- Example request with system message
+## cURL Examples
+
+- Request with system message
 
 ```bash
 curl --request POST \
@@ -68,7 +69,7 @@ curl --request POST \
 }'
 ```
 
-- Example request without system message
+- Request without system message
 
 ```bash
 curl --request POST \
