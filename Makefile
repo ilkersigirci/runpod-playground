@@ -31,15 +31,12 @@ prepare-env-file:  ## Copy .env.example to .env and correct the paths
 	cp .env.example .env
 	$(MAKE) change-paths-in-env-file
 
-change-model-env: ## Change the model that is specified in the .env file
-	# sed -i 's/HF_MODEL_NAME=alpindale\/WizardLM-2-8x22B/HF_MODEL_NAME=CohereForAI\/c4ai-command-r-v01/g' .env
-	sed -i '/HF_MODEL_NAME=/d' .env
-	echo "HF_MODEL_NAME=${HF_MODEL_NAME}" >> .env
-
-change-max-context-len-env: ## Change the max context length that is specified in the .env file
-	# sed -i 's/MAX_CONTEXT_LEN=32000/MAX_CONTEXT_LEN=40000/g' .env
-	sed -i '/MAX_CONTEXT_LEN=/d' .env
-	echo "MAX_CONTEXT_LEN=${MAX_CONTEXT_LEN}" >> .env
+replace-value-in-env-file: ## Replace a variable in the .env file
+	@if [ -z "${variable_name}" ] || [ -z "${new_value}" ]; then \
+		echo "Usage: make replace-value-in-env-file variable_name=<variable> new_value=<value>"; \
+		exit 1; \
+	fi
+	sed -i "s|${variable_name}=.*|${variable_name}=${new_value}|g" .env
 
 install-uv:
 	! command -v uv &> /dev/null && curl -LsSf https://astral.sh/uv/install.sh | sh

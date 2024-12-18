@@ -39,21 +39,20 @@ make gui
 - Example: Change default model and its context length to CohereForAI/c4ai-command-r-plus-GPTQ
 
 ```bash
-make change-model-env HF_MODEL_NAME=CohereForAI/c4ai-command-r-plus-GPTQ
-make change-max-context-len-env MAX_CONTEXT_LEN=40000
-
+make replace-value-in-env-file variable_name=HF_MODEL_NAME new_value=CohereForAI/c4ai-command-r-plus-GPTQ
+make replace-value-in-env-file variable_name=MAX_CONTEXT_LEN new_value=40000
 ```
 
 ## cURL Examples
 
-- Request with system message
+- Request with system message assuming `SERVED_MODEL_NAME=vLLM-Model`
 
 ```bash
 curl --request POST \
     --url http://0.0.0.0:8000/v1/chat/completions \
     --header "Content-Type: application/json" \
     --data '{
-  "model": "c4ai-command-r-plus-GPTQ",
+  "model": "vLLM-Model",
   "messages": [
   {
       "role": "system",
@@ -69,14 +68,14 @@ curl --request POST \
 }'
 ```
 
-- Request without system message
+- Request without system message assuming `SERVED_MODEL_NAME=vLLM-Model`
 
 ```bash
 curl --request POST \
     --url http://0.0.0.0:8000/v1/chat/completions \
     --header "Content-Type: application/json" \
     --data '{
-  "model": "c4ai-command-r-plus-GPTQ",
+  "model": "vLLM-Model",
   "messages": [
   {
     "role": "user",
