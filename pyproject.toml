@@ -14,7 +14,7 @@ dependencies = [
     "mistral-common>=1.5.0",
     "modelscope>=1.18.0",
     "runpod>=0.24.6",
-    "vllm>=0.6.4.post1",
+    "vllm>=0.6.5",
 ]
 
 [tool.ruff]
