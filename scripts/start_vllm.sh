@@ -38,6 +38,8 @@ MODEL_PATH=$LIBRARY_BASE_PATH/models/$SERVED_MODEL_NAME
 # --num-scheduler-steps 8 \
 # --enable-chunked-prefill \
 # --chat-template $LIBRARY_BASE_PATH/prompt_templates/codestral.jinja
+# --enable-auto-tool-choice \
+# --tool-call-parser llama3_json
 
 # python -m vllm.entrypoints.openai.api_server \
 vllm serve $MODEL_PATH \
