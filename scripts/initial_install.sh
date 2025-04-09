@@ -10,9 +10,7 @@ if ! command -v nano >/dev/null 2>&1; then
     apt update -y && apt install nano htop nvtop ncdu -y
 fi
 
-if ! command -v uv >/dev/null 2>&1; then
-    echo "******** Installing uv and creating virtual environment ********"
-    rm -rf $LIBRARY_BASE_PATH/.venv
+if ! command -v $HOME/.local/bin/uv >/dev/null 2>&1; then
     bash $LIBRARY_BASE_PATH/scripts/install_uv.sh
 fi
 

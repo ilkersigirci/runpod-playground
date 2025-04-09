@@ -6,7 +6,7 @@ source $(dirname "$(realpath "$0")")/../.env
 cd $LIBRARY_BASE_PATH
 
 # Install uv
-if ! command -v uv >/dev/null 2>&1; then
+if ! command -v $HOME/.local/bin/uv >/dev/null 2>&1; then
     echo "******** Installing uv ********"
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
