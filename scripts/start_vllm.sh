@@ -49,7 +49,5 @@ vllm serve $MODEL_PATH \
     --enable-prefix-caching \
     --gpu-memory-utilization 0.90 \
     --disable-log-stats \
-    --disable-frontend-multiprocessing \
-    --disable-async-output-proc \
     --tensor-parallel-size $GPU_COUNT \
     --max-model-len $MAX_CONTEXT_LEN
