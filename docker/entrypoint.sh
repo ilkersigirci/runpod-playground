@@ -7,4 +7,4 @@ else
     echo "The HF_TOKEN environment variable is not set or empty, not logging to Hugging Face."
 fi
 
-exec python -u -m vllm.entrypoints.openai.api_server "$@"
+exec python -u -m vllm serve "$@"
